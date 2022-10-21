@@ -14,7 +14,6 @@ ParkingSpots.forEach(({ STREET, BLK_NO }) => {
     spots[STREET][BLK_NO] = 1;
   }
 });
-
 for (const street in spots) {
   let stringArr = [];
   let streetObject = {};

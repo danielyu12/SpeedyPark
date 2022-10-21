@@ -7,6 +7,7 @@ import {
   SectionList,
   StatusBar,
 } from 'react-native';
+import Map from './src / components/MapTest';
 import spotList from './scripts/CreateStreetObject';
 
 const Item = ({ title }) => (
@@ -16,16 +17,20 @@ const Item = ({ title }) => (
 );
 
 const App = () => (
-  <SafeAreaView style={styles.container}>
-    <SectionList
+  <View style={styles.container}>
+    <View style={styles.mapContainer}>
+      <Map />
+    </View>
+
+    {/* <SectionList
       sections={spotList}
       keyExtractor={(item, index) => item + index}
       renderItem={({ item }) => <Item title={item} />}
       renderSectionHeader={({ section: { title } }) => (
         <Text style={styles.header}>{title}</Text>
       )}
-    />
-  </SafeAreaView>
+    /> */}
+  </View>
 );
 
 const styles = StyleSheet.create({

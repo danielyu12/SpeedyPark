@@ -2,7 +2,6 @@ import * as React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import spots from '../../assets/StreetParking.json';
-import ball from '../../assets/ball.png';
 
 export default function Map() {
   return (

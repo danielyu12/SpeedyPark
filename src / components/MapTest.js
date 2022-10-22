@@ -2,6 +2,8 @@ import * as React from 'react';
 import MapView, { Marker } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import spots from '../../assets/StreetParking.json';
+import spotnumbers from '../../scripts/CreateStreetSpotNumberObject.js';
+
 
 export default function Map() {
   return (
@@ -17,8 +19,11 @@ export default function Map() {
         }}
       >
         {spots.map((spot, index) => {
+          const number = spotnumbers[spot.STREET][spot.BLK_NO].toString();
+          const displaynumber = number + " potential spots on the street!"
           return (
             <Marker
+              description = {displaynumber}
               key={index}
               coordinate={{
                 latitude: spot.LATITUDE,

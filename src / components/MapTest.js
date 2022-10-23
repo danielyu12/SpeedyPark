@@ -12,15 +12,15 @@ export default function Map() {
         provider="google"
         style={styles.map}
         initialRegion={{
-          latitude: 42.347,
-          longitude: -71.125,
+          latitude: 42.350,
+          longitude: -71.106,
           latitudeDelta: 0.007,
-          longitudeDelta: 0.036,
+          longitudeDelta: 0.007,
         }}
       >
         {spots.map((spot, index) => {
           const number = spotnumbers[spot.STREET][spot.BLK_NO].toString();
-          const displaynumber = number + " potential spots on the street!"
+          const displaynumber = number + " potential spots on " + spot.STREET + " near " + spot.BLK_NO;
           return (
             <Marker
               description = {displaynumber}

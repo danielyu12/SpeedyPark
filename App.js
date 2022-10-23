@@ -18,9 +18,9 @@ const Item = ({ title }) => (
 
 const App = () => (
   <View style={styles.container}>
-    <View style={styles.mapContainer}>
+    {/* <View style={styles.mapContainer}> */}
       <Map />
-    </View>
+    {/* </View> */}
 
     {/* <SectionList
       sections={spotList}

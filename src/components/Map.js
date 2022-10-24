@@ -4,7 +4,6 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import spots from '../../assets/StreetParking.json';
 import spotnumbers from '../../scripts/CreateStreetSpotNumberObject.js';
 
-
 export default function Map() {
   return (
     <View style={styles.container}>
@@ -12,7 +11,7 @@ export default function Map() {
         provider="google"
         style={styles.map}
         initialRegion={{
-          latitude: 42.350,
+          latitude: 42.35,
           longitude: -71.106,
           latitudeDelta: 0.007,
           longitudeDelta: 0.007,
@@ -20,10 +19,15 @@ export default function Map() {
       >
         {spots.map((spot, index) => {
           const number = spotnumbers[spot.STREET][spot.BLK_NO].toString();
-          const displaynumber = number + " potential spots on " + spot.STREET + " near " + spot.BLK_NO;
+          const displaynumber =
+            number +
+            ' potential spots on ' +
+            spot.STREET +
+            ' near ' +
+            spot.BLK_NO;
           return (
             <Marker
-              description = {displaynumber}
+              description={displaynumber}
               key={index}
               coordinate={{
                 latitude: spot.LATITUDE,
@@ -45,7 +49,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   map: {
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: '100%',
+    height: '100%',
   },
 });

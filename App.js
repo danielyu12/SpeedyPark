@@ -2,6 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import MapPage from './src/pages/MapPage';
+import MapPage1 from './src/pages/MapPage1';
 import HomePage from './src/pages/HomePage';
 
 const Stack = createNativeStackNavigator();
@@ -14,6 +15,11 @@ const App = () => {
         <Stack.Screen
           name="Map"
           component={MapPage}
+          options={{ title: 'Park Map' }}
+        />
+        <Stack.Screen
+          name="Map1"
+          component={MapPage1}
           options={{ title: 'Park Map' }}
         />
       </Stack.Navigator>

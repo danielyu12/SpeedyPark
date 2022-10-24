@@ -10,7 +10,19 @@ const HomePage = ({ navigation }) => {
           navigation.navigate('Map');
         }}
       >
-        <Text style={styles.buttonText}>Press me to go to the map!</Text>
+        <Text style={styles.buttonText}>
+          Press me to go to the map of all spots!
+        </Text>
+      </Pressable>
+      <Pressable
+        style={styles.button}
+        onPress={() => {
+          navigation.navigate('Map1');
+        }}
+      >
+        <Text style={styles.buttonText}>
+          Press me to go to the map of street parking numbers!
+        </Text>
       </Pressable>
     </SafeAreaView>
   );

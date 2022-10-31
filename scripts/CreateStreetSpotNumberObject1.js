@@ -5,24 +5,23 @@ ParkingSpots.forEach(({ STREET, BLK_NO, LATITUDE, LONGITUDE }) => {
   if (STREET in spotNumbers) {
     if (BLK_NO in spotNumbers[STREET]) {
       spotNumbers[STREET][BLK_NO]['quantity'] += 1;
-      spotNumbers[STREET][BLK_NO]['coordinates'] = [
-        ...spotNumbers[STREET][BLK_NO]['coordinates'],
-        { latitude: LATITUDE, longitude: LONGITUDE },
-      ];
     } else {
       spotNumbers[STREET][BLK_NO] = {};
       spotNumbers[STREET][BLK_NO]['quantity'] = 1;
-      spotNumbers[STREET][BLK_NO]['coordinates'] = [
-        { latitude: LATITUDE, longitude: LONGITUDE },
-      ];
+      spotNumbers[STREET][BLK_NO]['location'] = {
+        lat: LATITUDE,
+        lng: LONGITUDE,
+      };
     }
   } else {
     spotNumbers[STREET] = {};
     spotNumbers[STREET][BLK_NO] = {};
     spotNumbers[STREET][BLK_NO]['quantity'] = 1;
-    spotNumbers[STREET][BLK_NO]['coordinates'] = [
-      { latitude: LATITUDE, longitude: LONGITUDE },
-    ];
+    spotNumbers[STREET][BLK_NO]['location'] = {
+      lat: LATITUDE,
+      lng: LONGITUDE,
+    };
   }
 });
+
 export default spotNumbers;

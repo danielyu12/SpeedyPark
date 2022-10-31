@@ -1,7 +1,7 @@
 import * as React from 'react';
-import MapView, { Marker } from 'react-native-maps';
+import MapView, { Marker, Polyline } from 'react-native-maps';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import spotNumbers from '../../scripts/CreateStreetSpotNumberObject1.js';
+import spotNumbers from '../../scripts/CreateStreetSpotNumberObject.js';
 
 export default function Map() {
   return (
@@ -16,36 +16,19 @@ export default function Map() {
           longitudeDelta: 0.007,
         }}
       >
-        {/* {spots.map((spot, index) => {
-          const number = spotnumbers[spot.STREET][spot.BLK_NO].toString();
-          const displaynumber =
-            number +
-            ' potential spots on ' +
-            spot.STREET +
-            ' near ' +
-            spot.BLK_NO;
-          return (
-            <Marker
-              description={displaynumber}
-              key={index}
-              coordinate={{
-                latitude: spot.LATITUDE,
-                longitude: spot.LONGITUDE,
-              }}
-            />
-          );
-        })} */}
-        {Object.keys(spotNumbers).map((street) => {
-          return Object.keys(spotNumbers[street]).map((block) => {
+        {Object.keys(spotNumbers).map((street, streetIndex) => {
+          return Object.keys(spotNumbers[street]).map((block, blockIndex) => {
             const number = spotNumbers[street][block]['quantity'].toString();
             const displaynumber =
               number + ' potential spots on ' + street + ' near ' + block;
             return (
-              <Marker
-                description={displaynumber}
-                coordinate={{
-                  latitude: spotNumbers[street][block]['location']['lat'],
-                  longitude: spotNumbers[street][block]['location']['lng'],
+              <Polyline
+                strokeWidth={4}
+                strokeColor={'blue'}
+                coordinates={spotNumbers[street][block]['coordinates']}
+                tappable={true}
+                onPress={() => {
+                  alert('Hi');
                 }}
               />
             );

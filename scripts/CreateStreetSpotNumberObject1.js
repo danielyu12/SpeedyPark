@@ -24,12 +24,4 @@ ParkingSpots.forEach(({ STREET, BLK_NO, LATITUDE, LONGITUDE }) => {
   }
 });
 
-Object.keys(spotNumbers).forEach((street) => {
-  Object.keys(spotNumbers[street]).forEach((block) => {
-    console.log(
-      `${street}, ${block}, ${spotNumbers[street][block]['location']['lat']}`
-    );
-  });
-});
-
 export default spotNumbers;

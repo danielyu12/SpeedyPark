@@ -33,7 +33,8 @@ export default function Map() {
         }}
       >
         {spots.map((spot, index) => {
-          const number = spotnumbers[spot.STREET][spot.BLK_NO].toString();
+          const number =
+            spotnumbers[spot.STREET][spot.BLK_NO]['quantity'].toString();
           const displaynumber =
             number +
             ' potential spots on ' +

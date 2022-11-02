@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import Map1 from '../components/Map1';
+import LineParkingMap from '../components/LineParkingMap';
 
 const MapPage = () => (
   <SafeAreaView style={styles.container}>
-    <Map1 />
+    <LineParkingMap />
   </SafeAreaView>
 );
 

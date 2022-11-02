@@ -16,19 +16,20 @@ export default function Map() {
           longitudeDelta: 0.007,
         }}
       >
-        {Object.keys(spotNumbers).map((street, streetIndex) => {
-          return Object.keys(spotNumbers[street]).map((block, blockIndex) => {
+        {Object.keys(spotNumbers).map((street) => {
+          return Object.keys(spotNumbers[street]).map((block) => {
             const number = spotNumbers[street][block]['quantity'].toString();
             const displaynumber =
               number + ' potential spots on ' + street + ' near ' + block;
             return (
               <Polyline
+                key={`${street}, ${block}`}
                 strokeWidth={4}
                 strokeColor={'blue'}
                 coordinates={spotNumbers[street][block]['coordinates']}
                 tappable={true}
                 onPress={() => {
-                  alert('Hi');
+                  alert(displaynumber);
                 }}
               />
             );

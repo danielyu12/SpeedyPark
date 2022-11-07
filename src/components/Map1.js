@@ -1,9 +1,9 @@
 import * as React from 'react';
 import MapView, { Marker, Polyline } from 'react-native-maps';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import spotNumbers from '../../scripts/CreateStreetSpotNumberObject.js';
 
-export default function Map(props) {
+export default function Map() {
   return (
     <View style={styles.container}>
       <MapView
@@ -16,25 +16,19 @@ export default function Map(props) {
           longitudeDelta: 0.007,
         }}
       >
-        {Object.keys(spotNumbers).map((street) => {
-          return Object.keys(spotNumbers[street]).map((block) => {
+        {Object.keys(spotNumbers).map((street, streetIndex) => {
+          return Object.keys(spotNumbers[street]).map((block, blockIndex) => {
             const number = spotNumbers[street][block]['quantity'].toString();
             const displaynumber =
               number + ' potential spots on ' + street + ' near ' + block;
             return (
               <Polyline
-                key={`${street}, ${block}`}
                 strokeWidth={4}
                 strokeColor={'blue'}
                 coordinates={spotNumbers[street][block]['coordinates']}
                 tappable={true}
                 onPress={() => {
-                  props.onStreetClick(
-                    street,
-                    block,
-                    number,
-                    spotNumbers[street][block]['rate']
-                  );
+                  alert('Hi');
                 }}
               />
             );

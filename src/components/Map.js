@@ -1,15 +1,35 @@
 import * as React from 'react';
 import MapView, { Marker } from 'react-native-maps';
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Pressable, TextInput } from 'react-native';
 import spots from '../../assets/StreetParking.json';
 import spotnumbers from '../../scripts/CreateStreetSpotNumberObject.js';
 import transactions from '../../assets/ParkBostonV1.json';
 import transactionsList from '../../scripts/CreateTransactionZoneObject.js';
 import turnovers from '../../assets/ParkBostonFiltered.json';
+import { std } from 'mathjs';
 
 var number2 = {};
 var displaynumber2 = {};
 var displayTurnover = {};
+let turnoverStats = {
+  set: [],
+  sum: 0,
+  average: 0,
+  standardDev: 0
+};
+
+const zoneArr = [
+  {'Zone': 833, 'Longitude': -71.11346661,	'Latitude': 42.35070267, 'Spots': 18},
+  {'Zone': 837, 'Longitude': -71.11323561,	'Latitude': 42.35101667, 'Spots': 58},
+  {'Zone': 839, 'Longitude': -71.11676461,	'Latitude': 42.35138967, 'Spots': 27},
+  {'Zone': 842, 'Longitude': -71.11921261,	'Latitude': 42.35184967, 'Spots': 15},
+  {'Zone': 848, 'Longitude': -71.12223661,	'Latitude': 42.35201967, 'Spots': 20},
+  {'Zone': 852, 'Longitude': -71.12296661,	'Latitude': 42.35143767, 'Spots': 11},
+  {'Zone': 853, 'Longitude': -71.12185561,	'Latitude': 42.35170267, 'Spots': 11},
+  {'Zone': 856, 'Longitude': -71.11709061,	'Latitude': 42.35113667, 'Spots': 21},
+  {'Zone': 857, 'Longitude': -71.11535561,	'Latitude': 42.35093067, 'Spots': 6},
+  {'Zone': 858, 'Longitude': -71.11431361,	'Latitude': 42.35078867, 'Spots': 9}
+]
 
 function parseTransaction() {
   transactions.map((transaction, index) => {
@@ -20,23 +40,47 @@ function parseTransaction() {
 }
 
 function parseTurnovers() {
-  turnovers.map((zone, index) => {
-    displayTurnover[0] = 'Sunday turnover: ' + zone.data.Sunday.averageTurnoverDay +
-                            '\n Monday turnover: ' + zone.data.Monday.averageTurnoverDay + 
-                            '\n Tuesday turnover: ' + zone.data.Tuesday.averageTurnoverDay + 
-                            '\n Wednesday turnover: ' + zone.data.Wednesday.averageTurnoverDay +
-                            '\n Thursday turnover: ' + zone.data.Thursday.averageTurnoverDay +
-                            '\n Friday turnover: ' + zone.data.Friday.averageTurnoverDay +
-                            '\n Saturday turnover: ' + zone.data.Saturday.averageTurnoverDay;
-  })
+  for (const [zone, values] of Object.entries(turnovers)) {
+    displayTurnover[zone] = {};
+    for (const day of Object.keys(values["data"])) {
+      const turnover = values["data"][day]["averageTurnoverDay"];
+      displayTurnover[zone][day] = turnover.toFixed(3);
+      if (turnover != 0) {
+        turnoverStats.set.push(turnover);
+        turnoverStats.sum += turnover;
+      }
+    }
+  }
+  turnoverStats.average = turnoverStats.sum / turnoverStats.set.length;
+  turnoverStats.standardDev = std(turnoverStats.set);
+  console.log(turnoverStats.average);
 }
+
+// function parseTurnovers() {
+//   turnovers.map((zone, index) => {
+//     displayTurnover[0] = 'Sunday turnover: ' + zone.data.Sunday.averageTurnoverDay +
+//                             '\n Monday turnover: ' + zone.data.Monday.averageTurnoverDay + 
+//                             '\n Tuesday turnover: ' + zone.data.Tuesday.averageTurnoverDay + 
+//                             '\n Wednesday turnover: ' + zone.data.Wednesday.averageTurnoverDay +
+//                             '\n Thursday turnover: ' + zone.data.Thursday.averageTurnoverDay +
+//                             '\n Friday turnover: ' + zone.data.Friday.averageTurnoverDay +
+//                             '\n Saturday turnover: ' + zone.data.Saturday.averageTurnoverDay;
+//   })
+// }
 
 export default function Map() {
   parseTransaction();
-  // parseTurnovers();
+  parseTurnovers();
+
+  const [dateInput, setDateInput] = React.useState("");
 
   return (
     <View style={styles.container}>
+        <TextInput
+          style={styles.button}
+          placeholder="mm/dd/yyyy"
+          onSubmitEditing={(value) => setDateInput(value.nativeEvent.text)}
+        />
       <MapView
         provider="google"
         style={styles.map}
@@ -47,175 +91,54 @@ export default function Map() {
           longitudeDelta: 0.007,
         }}
       >
-        {spots.map((spot, index) => {
+        {/* {spots.map((spot, index) => {
           const number =
             spotnumbers[spot.STREET][spot.BLK_NO]['quantity'].toString();
           const displaynumber = number + ' spots on ' + spot.STREET + ' near ' + spot.BLK_NO;
-          if (spot.X == -71.1134666081092 && spot.Y == 42.350702669858) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + 'Sunday turnover: ' + String(turnovers[833].data.Sunday.averageTurnoverDay).slice(0,5) +
-                ', Monday turnover: ' + String(turnovers[833].data.Monday.averageTurnoverDay).slice(0,5) + 
-                ', Tuesday turnover: ' + String(turnovers[833].data.Tuesday.averageTurnoverDay).slice(0,5) + 
-                ', Wednesday turnover: ' + String(turnovers[833].data.Wednesday.averageTurnoverDay).slice(0,5) +
-                ', Thursday turnover: ' + String(turnovers[833].data.Thursday.averageTurnoverDay).slice(0,5) +
-                ', Friday turnover: ' + String(turnovers[833].data.Friday.averageTurnoverDay).slice(0,5) +
-                ', Saturday turnover: ' + String(turnovers[833].data.Saturday.averageTurnoverDay).slice(0,5)}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (spot.X == -71.1132356080516 && spot.Y == 42.351016669925) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + 'Sunday turnover: ' + String(turnovers[837].data.Sunday.averageTurnoverDay).slice(0,5) +
-                ', Monday turnover: ' + String(turnovers[837].data.Monday.averageTurnoverDay).slice(0,5) + 
-                ', Tuesday turnover: ' + String(turnovers[837].data.Tuesday.averageTurnoverDay).slice(0,5) + 
-                ', Wednesday turnover: ' + String(turnovers[837].data.Wednesday.averageTurnoverDay).slice(0,5) +
-                ', Thursday turnover: ' + String(turnovers[837].data.Thursday.averageTurnoverDay).slice(0,5) +
-                ', Friday turnover: ' + String(turnovers[837].data.Friday.averageTurnoverDay).slice(0,5) +
-                ', Saturday turnover: ' + String(turnovers[837].data.Saturday.averageTurnoverDay).slice(0,5)}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (spot.X == -71.116764609232 && spot.Y == 42.3513896698829) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + 'Sunday turnover: ' + String(turnovers[839].data.Sunday.averageTurnoverDay).slice(0,5) +
-                ', Monday turnover: ' + String(turnovers[839].data.Monday.averageTurnoverDay).slice(0,5) + 
-                ', Tuesday turnover: ' + String(turnovers[839].data.Tuesday.averageTurnoverDay).slice(0,5) + 
-                ', Wednesday turnover: ' + String(turnovers[839].data.Wednesday.averageTurnoverDay).slice(0,5) +
-                ', Thursday turnover: ' + String(turnovers[839].data.Thursday.averageTurnoverDay).slice(0,5) +
-                ', Friday turnover: ' + String(turnovers[839].data.Friday.averageTurnoverDay).slice(0,5) +
-                ', Saturday turnover: ' + String(turnovers[839].data.Saturday.averageTurnoverDay).slice(0,5)}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (spot.X == -71.1192126100624 && spot.Y == 42.351849669892) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + displaynumber2[842]}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (spot.X == -71.122236611065 && spot.Y == 42.3520196698275) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + displaynumber2[848]}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (
-            spot.X == -71.1229666112709 &&
-            spot.Y == 42.3514376696936
-          ) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + displaynumber2[852]}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (
-            spot.X == -71.1218556109215 &&
-            spot.Y == 42.3517026697795
-          ) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + displaynumber2[853]}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (
-            spot.X == -71.1170906093242 &&
-            spot.Y == 42.3511366698245
-          ) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + displaynumber2[856]}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (
-            spot.X == -71.1153556087425 &&
-            spot.Y == 42.3509306698408
-          ) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + displaynumber2[857]}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else if (
-            spot.X == -71.1143136083924 &&
-            spot.Y == 42.3507886698472
-          ) {
-            return (
-              <Marker
-                description={displaynumber + ' with ' + displaynumber2[858]}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-                pinColor="#0000ff"
-              />
-            );
-          } else {
-            return (
-              <Marker
-                description={displaynumber}
-                key={index}
-                coordinate={{
-                  latitude: spot.LATITUDE,
-                  longitude: spot.LONGITUDE,
-                }}
-              />
-            );
+          return (
+            <Marker
+              description={displaynumber}
+              key={index}
+              coordinate={{
+                latitude: spot.LATITUDE,
+                longitude: spot.LONGITUDE,
+              }}
+            />
+          );
+        })} */}
+
+        {zoneArr.map((zone, index) => {
+          const displaynumber = zone['Spots'] + ' spots on ' + zone['Zone'];
+          let date = new Date();
+          if (dateInput) {
+            const parts = dateInput.split('/');
+            date = new Date(parts[2], parts[0]-1, parts[1]);
+            console.log(date);
           }
+          const dayMap = {0:'Sunday', 1:'Monday', 2:'Tuesday', 3:'Wednesday', 4:'Thursday', 5:'Friday', 6:'Saturday'};
+          const dayOfWeek = dayMap[date.getDay()];
+          const turnover = displayTurnover[zone['Zone']][dayOfWeek];
+          const turnoverString = `${dayOfWeek} Turnover: ${turnover}`;
+          const lowBound = turnoverStats.average - turnoverStats.standardDev;
+          const upBound = turnoverStats.average + turnoverStats.standardDev;
+          let color = "#0000FF"
+          if (turnover <= lowBound)
+            color = '#FF0000'
+          else if (turnover >= upBound)
+            color = '#00FF00'
+          else
+            color = '#0000FF'
+          return (
+            <Marker
+              description={turnoverString}
+              key={index}
+              coordinate={{
+                latitude: zone['Latitude'],
+                longitude: zone['Longitude']
+              }}
+              pinColor={color}
+            />
+          );
         })}
       </MapView>
     </View>
@@ -233,4 +156,13 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%',
   },
+  button: {
+    marginTop: 100,
+    padding: 5,
+    backgroundColor: '#D9D9D9',
+    shadowColor: '#171717',
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    marginBottom: '10%',
+  }
 });

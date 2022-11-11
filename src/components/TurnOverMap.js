@@ -75,7 +75,7 @@ function parseTurnovers() {
 //   })
 // }
 
-export default function Map() {
+export default function TurnOverMap() {
   parseTransaction();
   parseTurnovers();
 

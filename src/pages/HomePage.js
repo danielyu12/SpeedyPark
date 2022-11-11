@@ -35,9 +35,7 @@ const HomePage = ({ navigation }) => {
             navigation.navigate('Map');
           }}
         >
-          <Text style={styles.buttonText}>
-            Press me to go to the map of all spots!
-          </Text>
+          <Text style={styles.buttonText}>View Turnover Rates</Text>
         </Pressable>
         <Pressable
           style={styles.button}
@@ -45,9 +43,7 @@ const HomePage = ({ navigation }) => {
             navigation.navigate('Map1');
           }}
         >
-          <Text style={styles.buttonText}>
-            Press me to go to the map of street parking numbers!
-          </Text>
+          <Text style={styles.buttonText}>View All Parking Spots</Text>
         </Pressable>
       </View>
     </SafeAreaView>

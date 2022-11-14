@@ -45,7 +45,6 @@ const SpotInformationBottomSheet = (props) => {
   const paidParking = startDate < currentDate && endDate > currentDate;
 
   const parkingTime = props.currentStreet.payRate.split(' ');
-  console.log(parkingTime);
 
   const BottomSheetBackground = ({ style }) => {
     return (
@@ -68,7 +67,7 @@ const SpotInformationBottomSheet = (props) => {
       handleComponent={null}
       backgroundComponent={(props) => <BottomSheetBackground {...props} />}
     >
-      <BottomSheetScrollView style={styles.sheetContainer}>
+      <BottomSheetScrollView style={styles.sheetContainer} bounces={true}>
         <CloseButton
           style={styles.closeButton}
           color={'#D9D9D9'}
@@ -107,6 +106,9 @@ const SpotInformationBottomSheet = (props) => {
             activeStrokeColor={'green'}
             activeStrokeWidth={30}
           />
+          <Text style={styles.progressBarText}>
+            chance of finding a spot on this block at this time
+          </Text>
         </View>
         <View style={styles.pricesContainer}>
           <Text style={styles.pricesTitle}>Prices</Text>
@@ -121,6 +123,7 @@ const SpotInformationBottomSheet = (props) => {
           </Text>
           <Text style={styles.pricesText}>Free outside these hours</Text>
           <Text style={styles.pricesText}>No Restrictions</Text>
+          <View style={{ height: 50 }} />
         </View>
       </BottomSheetScrollView>
     </BottomSheet>
@@ -147,7 +150,6 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     width: '80%',
   },
-  streetTitleContainer: {},
   parkingSpotsIcon: {
     fontSize: 30,
     fontWeight: 'bold',
@@ -171,6 +173,13 @@ const styles = StyleSheet.create({
     color: '#53B218',
     fontSize: 15,
     fontFamily: 'Inter_700Bold',
+  },
+  progressBarText: {
+    marginTop: 10,
+    fontSize: 20,
+    fontWeight: 'bold',
+    fontFamily: 'Inter_700Bold',
+    textAlign: 'center',
   },
   spotChanceContainer: {
     width: '100%',

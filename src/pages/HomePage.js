@@ -45,6 +45,14 @@ const HomePage = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>View All Parking Spots</Text>
         </Pressable>
+        <Pressable
+          style={styles.button}
+          onPress={() => {
+            navigation.navigate('Map2');
+          }}
+        >
+          <Text style={styles.buttonText}>Search for Parking Areas</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );

@@ -22,21 +22,23 @@ export default function Map(props) {
             const displaynumber =
               number + ' potential spots on ' + street + ' near ' + block;
             return (
-              <Polyline
-                key={`${street}, ${block}`}
-                strokeWidth={4}
-                strokeColor={'blue'}
-                coordinates={spotNumbers[street][block]['coordinates']}
-                tappable={true}
-                onPress={() => {
-                  props.onStreetClick(
-                    street,
-                    block,
-                    number,
-                    spotNumbers[street][block]['rate']
-                  );
-                }}
-              />
+              block !== 'BU BRIDGE 3' && (
+                <Polyline
+                  key={`${street}, ${block}`}
+                  strokeWidth={4}
+                  strokeColor={'blue'}
+                  coordinates={spotNumbers[street][block]['coordinates']}
+                  tappable={true}
+                  onPress={() => {
+                    props.onStreetClick(
+                      street,
+                      block,
+                      number,
+                      spotNumbers[street][block]['rate']
+                    );
+                  }}
+                />
+              )
             );
           });
         })}

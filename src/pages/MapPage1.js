@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import LineParkingMap from '../components/LineParkingMap';
 import SpotInformationBottomSheet from '../components/SpotInformationBottomSheet';
+import AddressInput from '../components/AddressInput';
 
 const MapPage = () => {
   const [streetClicked, setStreetClicked] = useState(false);
@@ -25,6 +26,7 @@ const MapPage = () => {
   return (
     <SafeAreaView style={styles.container}>
       <LineParkingMap onStreetClick={onStreetClick} />
+      <AddressInput />
       {streetClicked && (
         <SpotInformationBottomSheet
           onSheetClose={onSheetClose}

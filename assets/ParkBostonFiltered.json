@@ -1,472 +1,542 @@
 {
     "833": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 192,
-            "totalOccurances": 13,
-            "averageEntriesDay": 14.76923076923077,
-            "averageTurnoverDay": 0.8205128205128206
+          "totalEntries": 192,
+          "totalOccurances": 13,
+          "averageEntriesDay": 14.76923076923077,
+          "averageTurnoverDay": 0.8205128205128206,
+          "averageDuration": 73.83333333333333
         },
         "Tuesday": {
-            "totalEntries": 290,
-            "totalOccurances": 15,
-            "averageEntriesDay": 19.333333333333332,
-            "averageTurnoverDay": 1.074074074074074
+          "totalEntries": 290,
+          "totalOccurances": 15,
+          "averageEntriesDay": 19.333333333333332,
+          "averageTurnoverDay": 1.074074074074074,
+          "averageDuration": 81.98965517241379
         },
         "Wednesday": {
-            "totalEntries": 325,
-            "totalOccurances": 15,
-            "averageEntriesDay": 21.666666666666668,
-            "averageTurnoverDay": 1.2037037037037037
+          "totalEntries": 325,
+          "totalOccurances": 15,
+          "averageEntriesDay": 21.666666666666668,
+          "averageTurnoverDay": 1.2037037037037037,
+          "averageDuration": 75.76
         },
         "Thursday": {
-            "totalEntries": 246,
-            "totalOccurances": 15,
-            "averageEntriesDay": 16.4,
-            "averageTurnoverDay": 0.911111111111111
+          "totalEntries": 246,
+          "totalOccurances": 15,
+          "averageEntriesDay": 16.4,
+          "averageTurnoverDay": 0.911111111111111,
+          "averageDuration": 77.3130081300813
         },
         "Friday": {
-            "totalEntries": 198,
-            "totalOccurances": 14,
-            "averageEntriesDay": 14.142857142857142,
-            "averageTurnoverDay": 0.7857142857142857
+          "totalEntries": 198,
+          "totalOccurances": 14,
+          "averageEntriesDay": 14.142857142857142,
+          "averageTurnoverDay": 0.7857142857142857,
+          "averageDuration": 76.16161616161617
         },
         "Saturday": {
-            "totalEntries": 155,
-            "totalOccurances": 15,
-            "averageEntriesDay": 10.333333333333334,
-            "averageTurnoverDay": 0.5740740740740741
+          "totalEntries": 155,
+          "totalOccurances": 15,
+          "averageEntriesDay": 10.333333333333334,
+          "averageTurnoverDay": 0.5740740740740741,
+          "averageDuration": 72.72903225806452
         }
-        },
-        "spots": 18
+      },
+      "spots": 18
     },
     "837": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 639,
-            "totalOccurances": 13,
-            "averageEntriesDay": 49.15384615384615,
-            "averageTurnoverDay": 0.8474801061007957
+          "totalEntries": 639,
+          "totalOccurances": 13,
+          "averageEntriesDay": 49.15384615384615,
+          "averageTurnoverDay": 0.8474801061007957,
+          "averageDuration": 124.79029733959311
         },
         "Tuesday": {
-            "totalEntries": 870,
-            "totalOccurances": 15,
-            "averageEntriesDay": 58,
-            "averageTurnoverDay": 1
+          "totalEntries": 870,
+          "totalOccurances": 15,
+          "averageEntriesDay": 58,
+          "averageTurnoverDay": 1,
+          "averageDuration": 131.316091954023
         },
         "Wednesday": {
-            "totalEntries": 878,
-            "totalOccurances": 15,
-            "averageEntriesDay": 58.53333333333333,
-            "averageTurnoverDay": 1.0091954022988505
+          "totalEntries": 878,
+          "totalOccurances": 15,
+          "averageEntriesDay": 58.53333333333333,
+          "averageTurnoverDay": 1.0091954022988505,
+          "averageDuration": 127.60364464692483
         },
         "Thursday": {
-            "totalEntries": 903,
-            "totalOccurances": 15,
-            "averageEntriesDay": 60.2,
-            "averageTurnoverDay": 1.0379310344827586
+          "totalEntries": 903,
+          "totalOccurances": 15,
+          "averageEntriesDay": 60.2,
+          "averageTurnoverDay": 1.0379310344827586,
+          "averageDuration": 129.67331118493908
         },
         "Friday": {
-            "totalEntries": 637,
-            "totalOccurances": 14,
-            "averageEntriesDay": 45.5,
-            "averageTurnoverDay": 0.7844827586206896
+          "totalEntries": 637,
+          "totalOccurances": 14,
+          "averageEntriesDay": 45.5,
+          "averageTurnoverDay": 0.7844827586206896,
+          "averageDuration": 129.05180533751962
         },
         "Saturday": {
-            "totalEntries": 567,
-            "totalOccurances": 15,
-            "averageEntriesDay": 37.8,
-            "averageTurnoverDay": 0.6517241379310345
+          "totalEntries": 567,
+          "totalOccurances": 15,
+          "averageEntriesDay": 37.8,
+          "averageTurnoverDay": 0.6517241379310345,
+          "averageDuration": 128.65608465608466
         }
-        },
-        "spots": 58
+      },
+      "spots": 58
     },
     "839": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 625,
-            "totalOccurances": 13,
-            "averageEntriesDay": 48.07692307692308,
-            "averageTurnoverDay": 1.7806267806267808
+          "totalEntries": 625,
+          "totalOccurances": 13,
+          "averageEntriesDay": 48.07692307692308,
+          "averageTurnoverDay": 1.7806267806267808,
+          "averageDuration": 89.5296
         },
         "Tuesday": {
-            "totalEntries": 758,
-            "totalOccurances": 15,
-            "averageEntriesDay": 50.53333333333333,
-            "averageTurnoverDay": 1.871604938271605
+          "totalEntries": 758,
+          "totalOccurances": 15,
+          "averageEntriesDay": 50.53333333333333,
+          "averageTurnoverDay": 1.871604938271605,
+          "averageDuration": 100.60949868073878
         },
         "Wednesday": {
-            "totalEntries": 753,
-            "totalOccurances": 15,
-            "averageEntriesDay": 50.2,
-            "averageTurnoverDay": 1.8592592592592594
+          "totalEntries": 753,
+          "totalOccurances": 15,
+          "averageEntriesDay": 50.2,
+          "averageTurnoverDay": 1.8592592592592594,
+          "averageDuration": 92.90836653386454
         },
         "Thursday": {
-            "totalEntries": 753,
-            "totalOccurances": 15,
-            "averageEntriesDay": 50.2,
-            "averageTurnoverDay": 1.8592592592592594
+          "totalEntries": 753,
+          "totalOccurances": 15,
+          "averageEntriesDay": 50.2,
+          "averageTurnoverDay": 1.8592592592592594,
+          "averageDuration": 97.55511288180611
         },
         "Friday": {
-            "totalEntries": 611,
-            "totalOccurances": 14,
-            "averageEntriesDay": 43.642857142857146,
-            "averageTurnoverDay": 1.6164021164021165
+          "totalEntries": 611,
+          "totalOccurances": 14,
+          "averageEntriesDay": 43.642857142857146,
+          "averageTurnoverDay": 1.6164021164021165,
+          "averageDuration": 100.51718494271685
         },
         "Saturday": {
-            "totalEntries": 572,
-            "totalOccurances": 15,
-            "averageEntriesDay": 38.13333333333333,
-            "averageTurnoverDay": 1.4123456790123456
+          "totalEntries": 572,
+          "totalOccurances": 15,
+          "averageEntriesDay": 38.13333333333333,
+          "averageTurnoverDay": 1.4123456790123456,
+          "averageDuration": 112.33741258741259
         }
-        },
-        "spots": 27
+      },
+      "spots": 27
     },
     "842": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 114,
-            "totalOccurances": 11,
-            "averageEntriesDay": 10.363636363636363,
-            "averageTurnoverDay": 0.6909090909090909
+          "totalEntries": 114,
+          "totalOccurances": 11,
+          "averageEntriesDay": 10.363636363636363,
+          "averageTurnoverDay": 0.6909090909090909,
+          "averageDuration": 66.19298245614036
         },
         "Tuesday": {
-            "totalEntries": 132,
-            "totalOccurances": 14,
-            "averageEntriesDay": 9.428571428571429,
-            "averageTurnoverDay": 0.6285714285714286
+          "totalEntries": 132,
+          "totalOccurances": 14,
+          "averageEntriesDay": 9.428571428571429,
+          "averageTurnoverDay": 0.6285714285714286,
+          "averageDuration": 67.70454545454545
         },
         "Wednesday": {
-            "totalEntries": 143,
-            "totalOccurances": 13,
-            "averageEntriesDay": 11,
-            "averageTurnoverDay": 0.7333333333333333
+          "totalEntries": 143,
+          "totalOccurances": 13,
+          "averageEntriesDay": 11,
+          "averageTurnoverDay": 0.7333333333333333,
+          "averageDuration": 66.46153846153847
         },
         "Thursday": {
-            "totalEntries": 142,
-            "totalOccurances": 15,
-            "averageEntriesDay": 9.466666666666667,
-            "averageTurnoverDay": 0.6311111111111111
+          "totalEntries": 142,
+          "totalOccurances": 15,
+          "averageEntriesDay": 9.466666666666667,
+          "averageTurnoverDay": 0.6311111111111111,
+          "averageDuration": 69.29577464788733
         },
         "Friday": {
-            "totalEntries": 73,
-            "totalOccurances": 14,
-            "averageEntriesDay": 5.214285714285714,
-            "averageTurnoverDay": 0.3476190476190476
+          "totalEntries": 73,
+          "totalOccurances": 14,
+          "averageEntriesDay": 5.214285714285714,
+          "averageTurnoverDay": 0.3476190476190476,
+          "averageDuration": 60.36986301369863
         },
         "Saturday": {
-            "totalEntries": 91,
-            "totalOccurances": 11,
-            "averageEntriesDay": 8.272727272727273,
-            "averageTurnoverDay": 0.5515151515151515
+          "totalEntries": 91,
+          "totalOccurances": 11,
+          "averageEntriesDay": 8.272727272727273,
+          "averageTurnoverDay": 0.5515151515151515,
+          "averageDuration": 73.78021978021978
         }
-        },
-        "spots": 15
+      },
+      "spots": 15
     },
     "848": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 162,
-            "totalOccurances": 13,
-            "averageEntriesDay": 12.461538461538462,
-            "averageTurnoverDay": 0.6230769230769231
+          "totalEntries": 162,
+          "totalOccurances": 13,
+          "averageEntriesDay": 12.461538461538462,
+          "averageTurnoverDay": 0.6230769230769231,
+          "averageDuration": 69.32716049382717
         },
         "Tuesday": {
-            "totalEntries": 197,
-            "totalOccurances": 15,
-            "averageEntriesDay": 13.133333333333333,
-            "averageTurnoverDay": 0.6566666666666666
+          "totalEntries": 197,
+          "totalOccurances": 15,
+          "averageEntriesDay": 13.133333333333333,
+          "averageTurnoverDay": 0.6566666666666666,
+          "averageDuration": 70.90862944162437
         },
         "Wednesday": {
-            "totalEntries": 223,
-            "totalOccurances": 15,
-            "averageEntriesDay": 14.866666666666667,
-            "averageTurnoverDay": 0.7433333333333334
+          "totalEntries": 223,
+          "totalOccurances": 15,
+          "averageEntriesDay": 14.866666666666667,
+          "averageTurnoverDay": 0.7433333333333334,
+          "averageDuration": 67.05381165919283
         },
         "Thursday": {
-            "totalEntries": 175,
-            "totalOccurances": 15,
-            "averageEntriesDay": 11.666666666666666,
-            "averageTurnoverDay": 0.5833333333333333
+          "totalEntries": 175,
+          "totalOccurances": 15,
+          "averageEntriesDay": 11.666666666666666,
+          "averageTurnoverDay": 0.5833333333333333,
+          "averageDuration": 71.73714285714286
         },
         "Friday": {
-            "totalEntries": 198,
-            "totalOccurances": 14,
-            "averageEntriesDay": 14.142857142857142,
-            "averageTurnoverDay": 0.7071428571428571
+          "totalEntries": 198,
+          "totalOccurances": 14,
+          "averageEntriesDay": 14.142857142857142,
+          "averageTurnoverDay": 0.7071428571428571,
+          "averageDuration": 73.21717171717172
         },
         "Saturday": {
-            "totalEntries": 190,
-            "totalOccurances": 15,
-            "averageEntriesDay": 12.666666666666666,
-            "averageTurnoverDay": 0.6333333333333333
+          "totalEntries": 190,
+          "totalOccurances": 15,
+          "averageEntriesDay": 12.666666666666666,
+          "averageTurnoverDay": 0.6333333333333333,
+          "averageDuration": 76.22631578947369
         }
-        },
-        "spots": 20
+      },
+      "spots": 20
     },
     "852": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 170,
-            "totalOccurances": 12,
-            "averageEntriesDay": 14.166666666666666,
-            "averageTurnoverDay": 1.2878787878787878
+          "totalEntries": 170,
+          "totalOccurances": 12,
+          "averageEntriesDay": 14.166666666666666,
+          "averageTurnoverDay": 1.2878787878787878,
+          "averageDuration": 68.5764705882353
         },
         "Tuesday": {
-            "totalEntries": 159,
-            "totalOccurances": 15,
-            "averageEntriesDay": 10.6,
-            "averageTurnoverDay": 0.9636363636363636
+          "totalEntries": 159,
+          "totalOccurances": 15,
+          "averageEntriesDay": 10.6,
+          "averageTurnoverDay": 0.9636363636363636,
+          "averageDuration": 73.74842767295597
         },
         "Wednesday": {
-            "totalEntries": 211,
-            "totalOccurances": 15,
-            "averageEntriesDay": 14.066666666666666,
-            "averageTurnoverDay": 1.2787878787878788
+          "totalEntries": 211,
+          "totalOccurances": 15,
+          "averageEntriesDay": 14.066666666666666,
+          "averageTurnoverDay": 1.2787878787878788,
+          "averageDuration": 71.86255924170617
         },
         "Thursday": {
-            "totalEntries": 180,
-            "totalOccurances": 15,
-            "averageEntriesDay": 12,
-            "averageTurnoverDay": 1.0909090909090908
+          "totalEntries": 180,
+          "totalOccurances": 15,
+          "averageEntriesDay": 12,
+          "averageTurnoverDay": 1.0909090909090908,
+          "averageDuration": 71.49444444444444
         },
         "Friday": {
-            "totalEntries": 215,
-            "totalOccurances": 14,
-            "averageEntriesDay": 15.357142857142858,
-            "averageTurnoverDay": 1.396103896103896
+          "totalEntries": 215,
+          "totalOccurances": 14,
+          "averageEntriesDay": 15.357142857142858,
+          "averageTurnoverDay": 1.396103896103896,
+          "averageDuration": 68.98139534883721
         },
         "Saturday": {
-            "totalEntries": 255,
-            "totalOccurances": 15,
-            "averageEntriesDay": 17,
-            "averageTurnoverDay": 1.5454545454545454
+          "totalEntries": 255,
+          "totalOccurances": 15,
+          "averageEntriesDay": 17,
+          "averageTurnoverDay": 1.5454545454545454,
+          "averageDuration": 66.75686274509803
         }
-        },
-        "spots": 11
+      },
+      "spots": 11
     },
     "853": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 45,
-            "totalOccurances": 12,
-            "averageEntriesDay": 3.75,
-            "averageTurnoverDay": 0.3409090909090909
+          "totalEntries": 45,
+          "totalOccurances": 12,
+          "averageEntriesDay": 3.75,
+          "averageTurnoverDay": 0.3409090909090909,
+          "averageDuration": 58.75555555555555
         },
         "Tuesday": {
-            "totalEntries": 55,
-            "totalOccurances": 15,
-            "averageEntriesDay": 3.6666666666666665,
-            "averageTurnoverDay": 0.3333333333333333
+          "totalEntries": 55,
+          "totalOccurances": 15,
+          "averageEntriesDay": 3.6666666666666665,
+          "averageTurnoverDay": 0.3333333333333333,
+          "averageDuration": 57.472727272727276
         },
         "Wednesday": {
-            "totalEntries": 85,
-            "totalOccurances": 15,
-            "averageEntriesDay": 5.666666666666667,
-            "averageTurnoverDay": 0.5151515151515151
+          "totalEntries": 85,
+          "totalOccurances": 15,
+          "averageEntriesDay": 5.666666666666667,
+          "averageTurnoverDay": 0.5151515151515151,
+          "averageDuration": 61.07058823529412
         },
         "Thursday": {
-            "totalEntries": 79,
-            "totalOccurances": 15,
-            "averageEntriesDay": 5.266666666666667,
-            "averageTurnoverDay": 0.47878787878787876
+          "totalEntries": 79,
+          "totalOccurances": 15,
+          "averageEntriesDay": 5.266666666666667,
+          "averageTurnoverDay": 0.47878787878787876,
+          "averageDuration": 64.49367088607595
         },
         "Friday": {
-            "totalEntries": 76,
-            "totalOccurances": 14,
-            "averageEntriesDay": 5.428571428571429,
-            "averageTurnoverDay": 0.4935064935064935
+          "totalEntries": 76,
+          "totalOccurances": 14,
+          "averageEntriesDay": 5.428571428571429,
+          "averageTurnoverDay": 0.4935064935064935,
+          "averageDuration": 55.10526315789474
         },
         "Saturday": {
-            "totalEntries": 73,
-            "totalOccurances": 15,
-            "averageEntriesDay": 4.866666666666666,
-            "averageTurnoverDay": 0.4424242424242424
+          "totalEntries": 73,
+          "totalOccurances": 15,
+          "averageEntriesDay": 4.866666666666666,
+          "averageTurnoverDay": 0.4424242424242424,
+          "averageDuration": 68.6027397260274
         }
-        },
-        "spots": 11
+      },
+      "spots": 11
     },
     "856": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 102,
-            "totalOccurances": 12,
-            "averageEntriesDay": 8.5,
-            "averageTurnoverDay": 0.40476190476190477
+          "totalEntries": 102,
+          "totalOccurances": 12,
+          "averageEntriesDay": 8.5,
+          "averageTurnoverDay": 0.40476190476190477,
+          "averageDuration": 62.72549019607843
         },
         "Tuesday": {
-            "totalEntries": 111,
-            "totalOccurances": 15,
-            "averageEntriesDay": 7.4,
-            "averageTurnoverDay": 0.3523809523809524
+          "totalEntries": 111,
+          "totalOccurances": 15,
+          "averageEntriesDay": 7.4,
+          "averageTurnoverDay": 0.3523809523809524,
+          "averageDuration": 74.65765765765765
         },
         "Wednesday": {
-            "totalEntries": 104,
-            "totalOccurances": 15,
-            "averageEntriesDay": 6.933333333333334,
-            "averageTurnoverDay": 0.33015873015873015
+          "totalEntries": 104,
+          "totalOccurances": 15,
+          "averageEntriesDay": 6.933333333333334,
+          "averageTurnoverDay": 0.33015873015873015,
+          "averageDuration": 69.49038461538461
         },
         "Thursday": {
-            "totalEntries": 100,
-            "totalOccurances": 15,
-            "averageEntriesDay": 6.666666666666667,
-            "averageTurnoverDay": 0.3174603174603175
+          "totalEntries": 100,
+          "totalOccurances": 15,
+          "averageEntriesDay": 6.666666666666667,
+          "averageTurnoverDay": 0.3174603174603175,
+          "averageDuration": 71.82
         },
         "Friday": {
-            "totalEntries": 94,
-            "totalOccurances": 14,
-            "averageEntriesDay": 6.714285714285714,
-            "averageTurnoverDay": 0.3197278911564626
+          "totalEntries": 94,
+          "totalOccurances": 14,
+          "averageEntriesDay": 6.714285714285714,
+          "averageTurnoverDay": 0.3197278911564626,
+          "averageDuration": 76.94680851063829
         },
         "Saturday": {
-            "totalEntries": 88,
-            "totalOccurances": 15,
-            "averageEntriesDay": 5.866666666666666,
-            "averageTurnoverDay": 0.27936507936507937
+          "totalEntries": 88,
+          "totalOccurances": 15,
+          "averageEntriesDay": 5.866666666666666,
+          "averageTurnoverDay": 0.27936507936507937,
+          "averageDuration": 79.32954545454545
         }
-        },
-        "spots": 21
+      },
+      "spots": 21
     },
     "857": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 194,
-            "totalOccurances": 13,
-            "averageEntriesDay": 14.923076923076923,
-            "averageTurnoverDay": 2.4871794871794872
+          "totalEntries": 194,
+          "totalOccurances": 13,
+          "averageEntriesDay": 14.923076923076923,
+          "averageTurnoverDay": 2.4871794871794872,
+          "averageDuration": 64.52577319587628
         },
         "Tuesday": {
-            "totalEntries": 233,
-            "totalOccurances": 15,
-            "averageEntriesDay": 15.533333333333333,
-            "averageTurnoverDay": 2.588888888888889
+          "totalEntries": 233,
+          "totalOccurances": 15,
+          "averageEntriesDay": 15.533333333333333,
+          "averageTurnoverDay": 2.588888888888889,
+          "averageDuration": 64.5107296137339
         },
         "Wednesday": {
-            "totalEntries": 225,
-            "totalOccurances": 15,
-            "averageEntriesDay": 15,
-            "averageTurnoverDay": 2.5
+          "totalEntries": 225,
+          "totalOccurances": 15,
+          "averageEntriesDay": 15,
+          "averageTurnoverDay": 2.5,
+          "averageDuration": 60.062222222222225
         },
         "Thursday": {
-            "totalEntries": 228,
-            "totalOccurances": 15,
-            "averageEntriesDay": 15.2,
-            "averageTurnoverDay": 2.533333333333333
+          "totalEntries": 228,
+          "totalOccurances": 15,
+          "averageEntriesDay": 15.2,
+          "averageTurnoverDay": 2.533333333333333,
+          "averageDuration": 66.14035087719299
         },
         "Friday": {
-            "totalEntries": 210,
-            "totalOccurances": 14,
-            "averageEntriesDay": 15,
-            "averageTurnoverDay": 2.5
+          "totalEntries": 210,
+          "totalOccurances": 14,
+          "averageEntriesDay": 15,
+          "averageTurnoverDay": 2.5,
+          "averageDuration": 64.53809523809524
         },
         "Saturday": {
-            "totalEntries": 199,
-            "totalOccurances": 15,
-            "averageEntriesDay": 13.266666666666667,
-            "averageTurnoverDay": 2.2111111111111112
+          "totalEntries": 199,
+          "totalOccurances": 15,
+          "averageEntriesDay": 13.266666666666667,
+          "averageTurnoverDay": 2.2111111111111112,
+          "averageDuration": 64.30653266331659
         }
-        },
-        "spots": 6
+      },
+      "spots": 6
     },
     "858": {
-        "data": {
+      "data": {
         "Sunday": {
-            "totalEntries": 0,
-            "totalOccurances": 0,
-            "averageEntriesDay": 0,
-            "averageTurnoverDay": 0
+          "totalEntries": 0,
+          "totalOccurances": 0,
+          "averageEntriesDay": 0,
+          "averageTurnoverDay": 0,
+          "averageDuration": 0
         },
         "Monday": {
-            "totalEntries": 70,
-            "totalOccurances": 12,
-            "averageEntriesDay": 5.833333333333333,
-            "averageTurnoverDay": 0.6481481481481481
+          "totalEntries": 70,
+          "totalOccurances": 12,
+          "averageEntriesDay": 5.833333333333333,
+          "averageTurnoverDay": 0.6481481481481481,
+          "averageDuration": 48.371428571428574
         },
         "Tuesday": {
-            "totalEntries": 104,
-            "totalOccurances": 15,
-            "averageEntriesDay": 6.933333333333334,
-            "averageTurnoverDay": 0.7703703703703704
+          "totalEntries": 104,
+          "totalOccurances": 15,
+          "averageEntriesDay": 6.933333333333334,
+          "averageTurnoverDay": 0.7703703703703704,
+          "averageDuration": 57.20192307692308
         },
         "Wednesday": {
-            "totalEntries": 105,
-            "totalOccurances": 15,
-            "averageEntriesDay": 7,
-            "averageTurnoverDay": 0.7777777777777778
+          "totalEntries": 105,
+          "totalOccurances": 15,
+          "averageEntriesDay": 7,
+          "averageTurnoverDay": 0.7777777777777778,
+          "averageDuration": 53.84761904761905
         },
         "Thursday": {
-            "totalEntries": 110,
-            "totalOccurances": 15,
-            "averageEntriesDay": 7.333333333333333,
-            "averageTurnoverDay": 0.8148148148148148
+          "totalEntries": 110,
+          "totalOccurances": 15,
+          "averageEntriesDay": 7.333333333333333,
+          "averageTurnoverDay": 0.8148148148148148,
+          "averageDuration": 58.82727272727273
         },
         "Friday": {
-            "totalEntries": 92,
-            "totalOccurances": 14,
-            "averageEntriesDay": 6.571428571428571,
-            "averageTurnoverDay": 0.7301587301587301
+          "totalEntries": 92,
+          "totalOccurances": 14,
+          "averageEntriesDay": 6.571428571428571,
+          "averageTurnoverDay": 0.7301587301587301,
+          "averageDuration": 57.70652173913044
         },
         "Saturday": {
-            "totalEntries": 83,
-            "totalOccurances": 15,
-            "averageEntriesDay": 5.533333333333333,
-            "averageTurnoverDay": 0.6148148148148148
+          "totalEntries": 83,
+          "totalOccurances": 15,
+          "averageEntriesDay": 5.533333333333333,
+          "averageTurnoverDay": 0.6148148148148148,
+          "averageDuration": 63.86746987951807
         }
-        },
-        "spots": 9
+      },
+      "spots": 9
     }
-}
+  }

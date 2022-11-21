@@ -1,6 +1,6 @@
 import * as React from 'react';
 import MapView, { Marker, Polyline } from 'react-native-maps';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import spotNumbers from '../../scripts/CreateStreetSpotNumberObject.js';
 
 export default function Map(props) {
@@ -9,11 +9,9 @@ export default function Map(props) {
       <MapView
         provider="google"
         style={styles.map}
-        initialRegion={{
-          latitude: 42.35,
-          longitude: -71.106,
-          latitudeDelta: 0.007,
-          longitudeDelta: 0.007,
+        region={props.region}
+        onRegionChangeComplete={(newRegion) => {
+          props.onRegionChange(newRegion);
         }}
       >
         {Object.keys(spotNumbers).map((street) => {

@@ -8,6 +8,7 @@ import {
 } from 'react-native';
 import { useFonts } from 'expo-font';
 import { Inter_700Bold } from '@expo-google-fonts/inter';
+import FooterNavBar from '../components/FooterNavBar';
 const HomePage = ({ navigation }) => {
   const [fontsLoaded] = useFonts({
     Inter_700Bold,
@@ -45,15 +46,8 @@ const HomePage = ({ navigation }) => {
         >
           <Text style={styles.buttonText}>View All Parking Spots</Text>
         </Pressable>
-        <Pressable
-          style={styles.button}
-          onPress={() => {
-            navigation.navigate('Map2');
-          }}
-        >
-          <Text style={styles.buttonText}>Search for Parking Areas</Text>
-        </Pressable>
       </View>
+      <FooterNavBar />
     </SafeAreaView>
   );
 };

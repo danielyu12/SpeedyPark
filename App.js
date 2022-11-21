@@ -1,38 +1,44 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MapPage from './src/pages/MapPage';
-import MapPage1 from './src/pages/MapPage1';
-import MapPage2 from './src/pages/MapPage2';
-import HomePage from './src/pages/HomePage';
+import LinedMapPage from './src/pages/LinedMapPage';
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
-const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomePage}
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let iconName;
+
+            if (route.name === 'Map') {
+              iconName = focused ? 'location' : 'location-outline';
+            } else if (route.name === 'Saved') {
+              iconName = focused ? 'ios-bookmark' : 'ios-bookmark-outline';
+            }
+
+            // You can return any component that you like here!
+            return <Ionicons name={iconName} size={size} color={color} />;
+          },
+          tabBarActiveTintColor: 'black',
+          tabBarInactiveTintColor: 'black',
+        })}
+      >
+        <Tab.Screen
+          name="Map"
+          component={LinedMapPage}
           options={{ headerShown: false }}
         />
-        <Stack.Screen
-          name="Map"
-          component={MapPage}
-          options={{ title: 'Park Map' }}
+        <Tab.Screen
+          name="Saved"
+          component={LinedMapPage}
+          options={{ headerShown: false }}
         />
-        <Stack.Screen
-          name="Map1"
-          component={MapPage1}
-          options={{ title: 'Park Map' }}
-        />
-        <Stack.Screen
-          name="Map2"
-          component={MapPage2}
-          options={{ title: 'Park Map' }}
-        />
-      </Stack.Navigator>
+      </Tab.Navigator>
     </NavigationContainer>
   );
 };

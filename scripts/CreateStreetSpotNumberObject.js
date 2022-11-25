@@ -32,5 +32,4 @@ ParkingSpots.forEach(
   }
 );
 
-console.log(spotNumbers);
 export default spotNumbers;

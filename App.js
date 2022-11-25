@@ -14,14 +14,11 @@ const App = () => {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName;
-
             if (route.name === 'Map') {
               iconName = focused ? 'location' : 'location-outline';
             } else if (route.name === 'Saved') {
               iconName = focused ? 'ios-bookmark' : 'ios-bookmark-outline';
             }
-
-            // You can return any component that you like here!
             return <Ionicons name={iconName} size={size} color={color} />;
           },
           tabBarActiveTintColor: 'black',

@@ -24,5 +24,5 @@ for (const street in spots) {
   streetObject.data = stringArr;
   spotList.push(streetObject);
 }
-console.log(spotList);
+
 export default spotList;

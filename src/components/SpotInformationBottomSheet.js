@@ -6,6 +6,9 @@ import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 import CloseButton from './CloseButton';
 import CircularProgress from 'react-native-circular-progress-indicator';
 import ProperCasing from '../../scripts/ProperCasing.js';
+import DetermineColor, {
+  calculatePercentage,
+} from '../../scripts/DetermineColor';
 
 const SpotInformationBottomSheet = (props) => {
   const sheetRef = useRef(null);
@@ -88,7 +91,7 @@ const SpotInformationBottomSheet = (props) => {
             There are {props.currentStreet.numberOfSpots} Spots on this street
           </Text>
         </View>
-        {!paidParking && (
+        {paidParking && (
           <View style={styles.freeParkingContainer}>
             <Text style={styles.freeParkingText}>
               This spot is currently free
@@ -97,13 +100,26 @@ const SpotInformationBottomSheet = (props) => {
         )}
         <View style={styles.spotChanceContainer}>
           <CircularProgress
-            value={60}
+            value={
+              props.currentStreet.zone
+                ? Math.round(calculatePercentage(props.currentStreet.zone))
+                : 100
+            }
             duration={750}
-            radius={150}
-            progressValueColor={'black'}
+            radius={110}
+            valueSuffix={'%'}
+            progressValueColor={
+              props.currentStreet.zone
+                ? DetermineColor(props.currentStreet.zone)
+                : 'black'
+            }
             inActiveStrokeColor={'#D9D9D9'}
             inActiveStrokeWidth={30}
-            activeStrokeColor={'green'}
+            activeStrokeColor={
+              props.currentStreet.zone
+                ? DetermineColor(props.currentStreet.zone)
+                : 'blue'
+            }
             activeStrokeWidth={30}
           />
           <Text style={styles.progressBarText}>
@@ -156,7 +172,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_700Bold',
   },
   parkingSpotsText: {
-    fontSize: 18,
+    fontSize: 20,
     fontFamily: 'Inter_400Regular',
     marginLeft: 10,
   },
@@ -167,15 +183,15 @@ const styles = StyleSheet.create({
   },
   freeParkingContainer: {
     justifyContent: 'center',
-    marginBottom: 15,
+    marginBottom: 30,
   },
   freeParkingText: {
     color: '#53B218',
-    fontSize: 15,
+    fontSize: 20,
     fontFamily: 'Inter_700Bold',
   },
   progressBarText: {
-    marginTop: 10,
+    marginTop: 20,
     fontSize: 20,
     fontWeight: 'bold',
     fontFamily: 'Inter_700Bold',
@@ -183,7 +199,7 @@ const styles = StyleSheet.create({
   },
   spotChanceContainer: {
     width: '100%',
-    marginBottom: 15,
+    marginBottom: 30,
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -198,12 +214,12 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   pricesTitle: {
-    fontSize: 22,
-    fontFamily: 'Inter_400Regular',
-    color: '#1B7ACF',
+    fontSize: 20,
+    fontFamily: 'Inter_700Bold',
+    color: 'black',
   },
   pricesText: {
-    fontSize: 15,
+    fontSize: 16,
     fontFamily: 'Inter_400Regular',
     color: 'black',
     marginTop: 10,

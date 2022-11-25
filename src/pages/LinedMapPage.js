@@ -14,13 +14,14 @@ const MapPage = () => {
     longitudeDelta: 0.007,
   });
 
-  const onStreetClick = (street, block, numberOfSpots, rate) => {
+  const onStreetClick = (street, block, numberOfSpots, rate, zone) => {
     setStreetClicked(true);
     setSelectedStreet({
       street: street,
       block: block,
       numberOfSpots: numberOfSpots,
       payRate: rate,
+      zone: zone,
     });
   };
 

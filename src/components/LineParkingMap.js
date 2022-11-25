@@ -2,6 +2,7 @@ import * as React from 'react';
 import MapView, { Marker, Polyline } from 'react-native-maps';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import spotNumbers from '../../scripts/CreateStreetSpotNumberObject.js';
+import DetermineColor from '../../scripts/DetermineColor';
 
 export default function Map(props) {
   return (
@@ -23,8 +24,12 @@ export default function Map(props) {
               block !== 'BU BRIDGE 3' && (
                 <Polyline
                   key={`${street}, ${block}`}
-                  strokeWidth={4}
-                  strokeColor={'blue'}
+                  strokeWidth={7}
+                  strokeColor={
+                    spotNumbers[street][block]['zone']
+                      ? DetermineColor(spotNumbers[street][block]['zone'])
+                      : 'blue'
+                  }
                   coordinates={spotNumbers[street][block]['coordinates']}
                   tappable={true}
                   onPress={() => {
@@ -32,7 +37,8 @@ export default function Map(props) {
                       street,
                       block,
                       number,
-                      spotNumbers[street][block]['rate']
+                      spotNumbers[street][block]['rate'],
+                      spotNumbers[street][block]['zone']
                     );
                   }}
                 />

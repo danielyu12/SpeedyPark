@@ -11,6 +11,7 @@ export default function Map(props) {
         provider="google"
         style={styles.map}
         region={props.region}
+        showsUserLocation = {true}
         onRegionChangeComplete={(newRegion) => {
           props.onRegionChange(newRegion);
         }}

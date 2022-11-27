@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import React, { useRef , useState} from 'react';
+import { View, StyleSheet, Text, Image, TouchableHighlight, TouchableOpacity, Alert, Switch} from 'react-native';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
@@ -21,6 +21,10 @@ const days = [
 ];
 
 const SpotInformationBottomSheet = (props) => {
+  const [isUserFavorite, setIsUserFavorite] = useState(false);
+
+  const onToggleSwitch = () => setIsUserFavorite(!isUserFavorite);
+
   const sheetRef = useRef(null);
   const snapPoints = ['80%'];
   const [fontsLoaded] = useFonts({
@@ -136,6 +140,22 @@ const SpotInformationBottomSheet = (props) => {
             chance of finding a spot here for a typical {days[new Date().getDay()]}
           </Text>
         </View>
+        {/* <View style = {styles.userFavoriteContainer}>
+          <TouchableHighlight
+            onPress = {() => Alert.alert('Location saved as favorite!')}>
+            <Text style = {styles.userFavoriteText}>
+               Click to save as favorite location!
+            </Text>
+         </TouchableHighlight>
+        </View> */}
+        <View style = {styles.userFavoriteTextContainer}>
+          <Text style = {styles.userFavoriteText}>
+            {isUserFavorite ? 'Saved as a favorite location' : 'Not saved as a favorite location'}
+          </Text>
+        </View>
+        <View style = {styles.userFavoriteToggleContainer}>
+          <Switch value={isUserFavorite} onValueChange={onToggleSwitch} />
+        </View>
         <View style={styles.pricesContainer}>
           <Text style={styles.pricesTitle}>Prices</Text>
           <Text style={styles.pricesText}>
@@ -233,6 +253,21 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_400Regular',
     color: 'black',
     marginTop: 10,
+  },
+  userFavoriteText: {
+    color: 'black',
+    fontSize: 16,
+    fontFamily: 'Inter_700Bold',
+  },
+  userFavoriteTextContainer: {
+    marginBottom: 20,
+    alignItems: 'left',
+    justifyContent: 'left',
+  },
+  userFavoriteToggleContainer: {
+    position: 'absolute',
+    top: 417.5,
+    right: 0,
   },
 });
 

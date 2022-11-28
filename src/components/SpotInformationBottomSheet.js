@@ -137,7 +137,7 @@ const SpotInformationBottomSheet = (props) => {
             activeStrokeWidth={30}
           />
           <Text style={styles.progressBarText}>
-            chance of finding a spot here for a typical {days[new Date().getDay()]}
+            {(props.currentStreet.zone && (Math.round(calculatePercentage(props.currentStreet.zone)) < 33)) ? ("Chance you will find parking on this street at this time. We recommend looking for another street to park.") : ("Chance you will find parking on this street at this time.")}
           </Text>
         </View>
         {/* <View style = {styles.userFavoriteContainer}>

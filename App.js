@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import MapPage from './src/pages/MapPage';
+import SavedLocationPage from './src/pages/SavedLocationPage';
 import LinedMapPage from './src/pages/LinedMapPage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import spotNumbers from './scripts/CreateStreetSpotNumberObject';
 
 const Tab = createBottomTabNavigator();
+
+export const BottomSheetContext = React.createContext();
 
 const App = () => {
   return (
@@ -32,7 +35,7 @@ const App = () => {
         />
         <Tab.Screen
           name="Saved"
-          component={LinedMapPage}
+          component={SavedLocationPage}
           options={{ headerShown: false }}
         />
       </Tab.Navigator>

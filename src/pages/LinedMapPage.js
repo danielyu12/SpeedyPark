@@ -1,10 +1,43 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 import LineParkingMap from '../components/LineParkingMap';
-import SpotInformationBottomSheet from '../components/SpotInformationBottomSheet';
+import SpotInformationBottomSheet from '../components/BottomSheet/SpotInformationBottomSheet';
 import AddressInput from '../components/AddressInput';
+import spotNumbers from '../../scripts/CreateStreetSpotNumberObject';
 
-const MapPage = () => {
+const MapPage = (props) => {
+  useEffect(() => {
+    if (props.route.params) {
+      setStreetClicked(true);
+      setSelectedStreet({
+        street: props.route.params.street,
+        block: props.route.params.block,
+        numberOfSpots:
+          spotNumbers[props.route.params.street][props.route.params.block][
+            'quantity'
+          ],
+        payRate:
+          spotNumbers[props.route.params.street][props.route.params.block][
+            'rate'
+          ],
+        zone: spotNumbers[props.route.params.street][props.route.params.block][
+          'zone'
+        ],
+      });
+      setRegion({
+        latitude:
+          spotNumbers[props.route.params.street][props.route.params.block][
+            'coordinates'
+          ][0]['latitude'],
+        longitude:
+          spotNumbers[props.route.params.street][props.route.params.block][
+            'coordinates'
+          ][0]['longitude'],
+        latitudeDelta: 0.003,
+        longitudeDelta: 0.003,
+      });
+    }
+  }, [props]);
   const [streetClicked, setStreetClicked] = useState(false);
   const [selectedStreet, setSelectedStreet] = useState({});
   const [region, setRegion] = useState({
@@ -33,7 +66,6 @@ const MapPage = () => {
       longitudeDelta: 0.003,
     });
   };
-
   const onLocationChange = (region) => {
     setRegion(region);
   };

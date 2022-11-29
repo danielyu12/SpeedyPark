@@ -1,14 +1,14 @@
 import React, { useRef, useState } from 'react';
-import { View, StyleSheet, Text, Image } from 'react-native';
+import { View, StyleSheet, Text, Pressable } from 'react-native';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 import CloseButton from './CloseButton';
 import CircularProgress from 'react-native-circular-progress-indicator';
-import ProperCasing from '../../scripts/ProperCasing.js';
+import ProperCasing from '../../../scripts/ProperCasing.js';
 import DetermineColor, {
   calculatePercentage,
-} from '../../scripts/DetermineColor';
+} from '../../../scripts/DetermineColor';
 
 const days = [
   'Sunday',
@@ -22,7 +22,7 @@ const days = [
 
 const SpotInformationBottomSheet = (props) => {
   const sheetRef = useRef(null);
-  const snapPoints = ['80%'];
+  const snapPoints = ['82%'];
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
     Inter_700Bold,
@@ -32,33 +32,45 @@ const SpotInformationBottomSheet = (props) => {
     return null;
   }
 
-  var startPayTime = props.currentStreet.payRate
-    .split(' ')[0]
-    .split('-')[0]
-    .replace('AM', '')
-    .concat(':00');
-  var endPayTime = props.currentStreet.payRate
-    .split(' ')[0]
-    .split('-')[1]
-    .replace('PM', '')
-    .concat(':00');
+  //Formatting the parking times and determining whether or not they need to pay for parking
+  var setDateTime = function (date, str) {
+    var sp = str.split(':');
+    date.setHours(parseInt(sp[0], 10));
+    date.setMinutes(parseInt(sp[1], 10));
+    date.setSeconds(parseInt(sp[2], 10));
+    return date;
+  };
 
-  const currentDate = new Date();
+  const militaryTime = (time) => {
+    if (time.indexOf('PM') != -1) {
+      const oldHour = parseInt(time.split(':')[0]);
+      const newHour = 12 + oldHour;
+      return newHour.toString().concat(':').concat(time.split(':')[1]);
+    }
+    return time;
+  };
 
-  const startDate = new Date(currentDate.getTime());
-  startDate.setHours(startPayTime.split(':')[0]);
-  startDate.setMinutes(startPayTime.split(':')[1]);
-  startDate.setSeconds(startPayTime.split(':')[2]);
+  var current = new Date();
 
-  const endDate = new Date(currentDate.getTime());
-  endDate.setHours(endPayTime.split(':')[0]);
-  endDate.setMinutes(endPayTime.split(':')[1]);
-  endDate.setSeconds(endPayTime.split(':')[2]);
+  var c = current.getTime(),
+    start = setDateTime(
+      new Date(current),
+      militaryTime(props.currentStreet.payRate.split(' ')[0].split('-')[0])
+        .replace('AM', '')
+        .concat(':00')
+    ),
+    end = setDateTime(
+      new Date(current),
+      militaryTime(props.currentStreet.payRate.split(' ')[0].split('-')[1])
+        .replace('PM', '')
+        .concat(':00')
+    );
 
-  const paidParking = startDate < currentDate && endDate > currentDate;
+  const paidParking = c > start.getTime() && c < end.getTime();
 
   const parkingTime = props.currentStreet.payRate.split(' ');
 
+  //Adding custom border to the BottomSheet
   const BottomSheetBackground = ({ style }) => {
     return (
       <View
@@ -101,7 +113,7 @@ const SpotInformationBottomSheet = (props) => {
             There are {props.currentStreet.numberOfSpots} Spots on this street
           </Text>
         </View>
-        {paidParking && (
+        {!paidParking && (
           <View style={styles.freeParkingContainer}>
             <Text style={styles.freeParkingText}>
               This spot is currently free
@@ -113,7 +125,7 @@ const SpotInformationBottomSheet = (props) => {
             value={
               props.currentStreet.zone
                 ? Math.round(calculatePercentage(props.currentStreet.zone))
-                : 100
+                : 0
             }
             duration={750}
             radius={110}
@@ -149,8 +161,11 @@ const SpotInformationBottomSheet = (props) => {
           </Text>
           <Text style={styles.pricesText}>Free outside these hours</Text>
           <Text style={styles.pricesText}>No Restrictions</Text>
-          <View style={{ height: 50 }} />
         </View>
+        <Pressable style={styles.saveButton} onPress={() => {}}>
+          <Text style={styles.saveButtonText}>Save Location</Text>
+        </Pressable>
+        <View style={{ height: 50 }} />
       </BottomSheetScrollView>
     </BottomSheet>
   );
@@ -233,6 +248,25 @@ const styles = StyleSheet.create({
     fontFamily: 'Inter_400Regular',
     color: 'black',
     marginTop: 10,
+  },
+  saveButton: {
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: '#1B7ACF',
+    borderColor: '#1B7ACF',
+    borderWidth: 1,
+    borderRadius: 22,
+    padding: 10,
+    shadowColor: '#00000040',
+    shadowOffset: { width: 3, height: 3 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+  },
+  saveButtonText: {
+    color: 'white',
+    fontFamily: 'Inter_700Bold',
+    fontSize: 20,
   },
 });
 

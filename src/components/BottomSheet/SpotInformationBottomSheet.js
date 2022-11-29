@@ -10,6 +10,16 @@ import DetermineColor, {
   calculatePercentage,
 } from '../../../scripts/DetermineColor';
 
+const days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday',
+];
+
 const SpotInformationBottomSheet = (props) => {
   const sheetRef = useRef(null);
   const snapPoints = ['82%'];
@@ -135,7 +145,7 @@ const SpotInformationBottomSheet = (props) => {
             activeStrokeWidth={30}
           />
           <Text style={styles.progressBarText}>
-            chance of finding a spot on this block at this time
+            chance of finding a spot here for a typical {days[new Date().getDay()]}
           </Text>
         </View>
         <View style={styles.pricesContainer}>

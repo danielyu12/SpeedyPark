@@ -1,4 +1,4 @@
-const Transactions = require('../assets/ParkBostonV1.json');
+const Transactions = require('../assets/ParkBostonV1.json'); // change to new master dataset name
 
 let transactionList = {};
 Transactions.forEach(({ Zone }) => {

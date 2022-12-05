@@ -11,6 +11,15 @@ let days = {
 }
 
 let multiplied = {
+    782: JSON.parse(JSON.stringify(days)),
+    791: JSON.parse(JSON.stringify(days)),
+    792: JSON.parse(JSON.stringify(days)),
+    793: JSON.parse(JSON.stringify(days)),
+    794: JSON.parse(JSON.stringify(days)),
+    798: JSON.parse(JSON.stringify(days)),
+    802: JSON.parse(JSON.stringify(days)),
+    808: JSON.parse(JSON.stringify(days)),
+    814: JSON.parse(JSON.stringify(days)),
     833: JSON.parse(JSON.stringify(days)),
     837: JSON.parse(JSON.stringify(days)),
     839: JSON.parse(JSON.stringify(days)),
@@ -24,7 +33,7 @@ let multiplied = {
 };
 
 try {
-    const readLogs = fs.readFileSync('./ParkBostonFiltered.json');
+    const readLogs = fs.readFileSync('./ParkBostonFiltered.json'); // change to new filtered dataset from new mastersheet
     const data = JSON.parse(readLogs);
     for (const zone of Object.keys(data)){
         for (const day of Object.keys(data[zone]["data"])){

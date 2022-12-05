@@ -37,7 +37,8 @@ const MapPage = (props) => {
         longitudeDelta: 0.003,
       });
     }
-  }, [props]);
+  }, [props.route.params]);
+
   const [streetClicked, setStreetClicked] = useState(false);
   const [selectedStreet, setSelectedStreet] = useState({});
   const [region, setRegion] = useState({
@@ -46,6 +47,15 @@ const MapPage = (props) => {
     latitudeDelta: 0.007,
     longitudeDelta: 0.007,
   });
+  const [showMarkers, setShowMarkers] = useState(false);
+
+  useEffect(() => {
+    if (region.latitudeDelta < 0.004 && region.longitudeDelta < 0.004) {
+      setShowMarkers(true);
+    } else {
+      setShowMarkers(false);
+    }
+  }, [region]);
 
   const onStreetClick = (street, block, numberOfSpots, rate, zone) => {
     setStreetClicked(true);
@@ -81,6 +91,7 @@ const MapPage = (props) => {
         onStreetClick={onStreetClick}
         region={region}
         onRegionChange={onLocationChange}
+        showMarkers={showMarkers}
       />
       <AddressInput onLocationSearch={onLocationSearch} />
       {streetClicked && (

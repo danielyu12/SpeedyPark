@@ -33,7 +33,7 @@ let multiplied = {
 };
 
 try {
-    const readLogs = fs.readFileSync('./ParkBostonFiltered.json'); // change to new filtered dataset from new mastersheet
+    const readLogs = fs.readFileSync('./ParkBostonMasterFiltered.json'); 
     const data = JSON.parse(readLogs);
     for (const zone of Object.keys(data)){
         for (const day of Object.keys(data[zone]["data"])){
@@ -57,4 +57,4 @@ for (const zone of Object.keys(multiplied))
         multiplied[zone][day] = ((1 - (multiplied[zone][day] / maximum)) * 100).toFixed(3)
 
 const writeString = JSON.stringify(multiplied)
-fs.writeFileSync('./ParkingPercentages.json', writeString)
+fs.writeFileSync('./MasterParkingPercentages.json', writeString)

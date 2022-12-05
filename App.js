@@ -4,14 +4,20 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SavedLocationPage from './src/pages/SavedLocationPage';
 import LinedMapPage from './src/pages/LinedMapPage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import spotNumbers from './scripts/CreateStreetSpotNumberObject';
+import GettingStarted from './src/components/GettingStarted';
 
 const Tab = createBottomTabNavigator();
 
-export const BottomSheetContext = React.createContext();
-
 const App = () => {
-  return (
+  const [showGetStarted, setShowStarted] = useState(true);
+
+  const getStarted = () => {
+    setShowStarted(false);
+  };
+
+  return showGetStarted ? (
+    <GettingStarted getStarted={getStarted} />
+  ) : (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({

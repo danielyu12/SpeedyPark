@@ -1,4 +1,4 @@
-const ParkingPercentages = require('../assets/ParkingPercentages.json');
+const ParkingPercentages = require('../assets/MasterParkingPercentages.json');
 
 const today = new Date().getDay();
 const days = [

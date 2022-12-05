@@ -2,7 +2,7 @@ import { View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import { useFonts } from 'expo-font';
 import {
   Inter_300Light,
-  Inter_400Regular,
+  Inter_500Medium,
   Inter_700Bold,
 } from '@expo-google-fonts/inter';
 import AllSavedLocations from '../components/SavedLocations/AllSavedLocations';
@@ -10,7 +10,7 @@ import AllSavedLocations from '../components/SavedLocations/AllSavedLocations';
 const SavedLocationPage = ({ navigation, onSavedSelect }) => {
   const [fontsLoaded] = useFonts({
     Inter_300Light,
-    Inter_400Regular,
+    Inter_500Medium,
     Inter_700Bold,
   });
 
@@ -48,15 +48,14 @@ const Styles = StyleSheet.create({
     fontFamily: 'Inter_300Light',
   },
   savedLocationTitle: {
-    fontFamily: 'Inter_400Regular',
+    fontFamily: 'Inter_500Medium',
     fontSize: 20,
-    marginLeft: '10%',
+    marginLeft: '6%',
     marginBottom: '5%',
   },
   savedLocationsContainer: {
     flex: 11,
     width: '100%',
-    marginLeft: '10%',
   },
 });
 

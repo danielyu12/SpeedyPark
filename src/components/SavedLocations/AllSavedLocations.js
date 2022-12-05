@@ -1,25 +1,81 @@
 import { View, StyleSheet, FlatList, Pressable, Text } from 'react-native';
 import SavedLocations from '../../../assets/SavedLocations.json';
-import Ionicons from 'react-native-vector-icons/Ionicons';
+import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import properCasing from '../../../scripts/ProperCasing';
-import { Inter_700Bold } from '@expo-google-fonts/inter';
+import { Inter_500Medium, Inter_700Bold } from '@expo-google-fonts/inter';
 import { useFonts } from 'expo-font';
 import { TabActions } from '@react-navigation/native';
+import DetermineColor, {
+  calculatePercentage,
+} from '../../../scripts/DetermineColor';
+import spotNumbers from '../../../scripts/CreateStreetSpotNumberObject';
 
 const AllSavedLocations = (props) => {
   const [fontsLoaded] = useFonts({
+    Inter_500Medium,
     Inter_700Bold,
   });
 
   if (!fontsLoaded) {
     return null;
   }
+
   return (
     <FlatList
       data={SavedLocations}
-      renderItem={({ item }) => {
+      ItemSeparatorComponent={() => {
         return (
-          <View style={Styles.locationContainer}>
+          <View
+            style={{ height: 2, width: '100%', backgroundColor: '#E9E9E9' }}
+          />
+        );
+      }}
+      renderItem={({ item }) => {
+        const percentCircleColor = spotNumbers[item.STREET][item.BLK_NO]['zone']
+          ? DetermineColor(spotNumbers[item.STREET][item.BLK_NO]['zone'])
+          : 'black';
+        return (
+          <Pressable
+            style={Styles.locationContainer}
+            onPress={() => {
+              const jumpToAction = TabActions.jumpTo('Map', {
+                block: item.BLK_NO,
+                street: item.STREET,
+              });
+              props.navigation.dispatch(jumpToAction);
+            }}
+          >
+            <View
+              style={[
+                Styles.percentCircle,
+                {
+                  borderColor: percentCircleColor,
+                },
+              ]}
+            >
+              <Text
+                style={[
+                  Styles.percentCircleValue,
+                  { color: percentCircleColor },
+                ]}
+              >
+                {spotNumbers[item.STREET][item.BLK_NO]['zone']
+                  ? Math.round(
+                      calculatePercentage(
+                        spotNumbers[item.STREET][item.BLK_NO]['zone']
+                      )
+                    )
+                  : 'N/A'}
+              </Text>
+              <Text
+                style={[
+                  Styles.percentCircleSymbol,
+                  { color: percentCircleColor },
+                ]}
+              >
+                %
+              </Text>
+            </View>
             <Text style={Styles.streetTitle}>
               {properCasing(item.BLK_NO)
                 .replace('Bu ', 'BU ')
@@ -31,25 +87,8 @@ const AllSavedLocations = (props) => {
                 .replace(/[0-9]/g)
                 .trim()}
             </Text>
-            <Pressable
-              style={Styles.startButton}
-              onPress={() => {
-                const jumpToAction = TabActions.jumpTo('Map', {
-                  block: item.BLK_NO,
-                  street: item.STREET,
-                });
-                props.navigation.dispatch(jumpToAction);
-              }}
-            >
-              <Ionicons
-                name="md-navigate-outline"
-                size={20}
-                color="white"
-                style={{ marginLeft: 5 }}
-              />
-              <Text style={Styles.startButtonText}>Start</Text>
-            </Pressable>
-          </View>
+            <SimpleLineIcons name="arrow-right" size={30} />
+          </Pressable>
         );
       }}
       keyExtractor={(item) => {
@@ -60,30 +99,37 @@ const AllSavedLocations = (props) => {
 };
 
 const Styles = StyleSheet.create({
-  locationContainer: { marginBottom: 25 },
-  startButton: {
-    marginTop: 5,
-    padding: 7,
+  locationContainer: {
+    width: '100%',
+    padding: 20,
     flexDirection: 'row',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#1B7ACF',
-    backgroundColor: '#1B7ACF',
-    width: '25%',
     alignItems: 'center',
-    shadowColor: '#00000040',
-    shadowOffset: { width: 3, height: 3 },
-    shadowOpacity: 0.8,
-    shadowRadius: 1,
-  },
-  startButtonText: {
-    fontSize: 15,
-    fontFamily: 'Inter_700Bold',
-    marginLeft: '10%',
-    color: 'white',
+    justifyContent: 'space-between',
   },
   streetTitle: {
-    fontSize: 18,
+    fontSize: 12,
+  },
+  percentCircle: {
+    width: 80,
+    height: 80,
+    borderWidth: 1,
+    borderRadius: 40,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#00000040',
+    shadowOffset: { width: 1.5, height: 1.5 },
+    shadowOpacity: 0.8,
+    shadowRadius: 1,
+    flexDirection: 'row',
+  },
+  percentCircleValue: {
+    fontFamily: 'Inter_500Medium',
+    fontSize: 25,
+  },
+  percentCircleSymbol: {
+    marginTop: '10%',
+    fontFamily: 'Inter_500Medium',
+    fontSize: 10,
   },
 });
 

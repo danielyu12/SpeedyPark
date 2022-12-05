@@ -1,17 +1,28 @@
-import * as React from 'react';
-import MapView, { Marker, Polyline } from 'react-native-maps';
+import { Text } from 'react-native';
+import MapView, { Callout, Marker, Polyline } from 'react-native-maps';
 import { StyleSheet, View, StatusBar } from 'react-native';
 import spotNumbers from '../../scripts/CreateStreetSpotNumberObject.js';
-import DetermineColor from '../../scripts/DetermineColor';
+import { Inter_700Bold } from '@expo-google-fonts/inter';
+import { useFonts } from 'expo-font';
+import DetermineColor, {
+  calculatePercentage,
+} from '../../scripts/DetermineColor';
 
 export default function Map(props) {
+  const [fontsLoaded] = useFonts({
+    Inter_700Bold,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
   return (
     <View style={styles.container}>
       <MapView
         provider="google"
         style={styles.map}
         region={props.region}
-        showsUserLocation = {true}
+        showsUserLocation={true}
         onRegionChangeComplete={(newRegion) => {
           props.onRegionChange(newRegion);
         }}
@@ -23,26 +34,53 @@ export default function Map(props) {
               number + ' potential spots on ' + street + ' near ' + block;
             return (
               block !== 'BU BRIDGE 3' && (
-                <Polyline
-                  key={`${street}, ${block}`}
-                  strokeWidth={7}
-                  strokeColor={
-                    spotNumbers[street][block]['zone']
-                      ? DetermineColor(spotNumbers[street][block]['zone'])
-                      : 'blue'
-                  }
-                  coordinates={spotNumbers[street][block]['coordinates']}
-                  tappable={true}
-                  onPress={() => {
-                    props.onStreetClick(
-                      street,
-                      block,
-                      number,
-                      spotNumbers[street][block]['rate'],
+                <>
+                  <Polyline
+                    key={`${street}, ${block}`}
+                    strokeWidth={7}
+                    strokeColor={
                       spotNumbers[street][block]['zone']
-                    );
-                  }}
-                />
+                        ? DetermineColor(spotNumbers[street][block]['zone'])
+                        : 'blue'
+                    }
+                    coordinates={spotNumbers[street][block]['coordinates']}
+                    tappable={true}
+                    onPress={() => {
+                      props.onStreetClick(
+                        street,
+                        block,
+                        number,
+                        spotNumbers[street][block]['rate'],
+                        spotNumbers[street][block]['zone']
+                      );
+                    }}
+                  />
+                  {props.showMarkers && (
+                    <Marker
+                      coordinate={spotNumbers[street][block]['coordinates'][0]}
+                    >
+                      <View
+                        style={[
+                          styles.customMarker,
+                          {
+                            backgroundColor: spotNumbers[street][block]['zone']
+                              ? DetermineColor(
+                                  spotNumbers[street][block]['zone']
+                                )
+                              : 'blue',
+                          },
+                        ]}
+                      >
+                        <Text style={styles.customMarkerQuantityText}>
+                          {spotNumbers[street][block]['quantity']}
+                        </Text>
+                        <Text style={styles.customMarkerText}>
+                          total spots available
+                        </Text>
+                      </View>
+                    </Marker>
+                  )}
+                </>
               )
             );
           });
@@ -62,5 +100,23 @@ const styles = StyleSheet.create({
   map: {
     width: '100%',
     height: '100%',
+  },
+  customMarker: {
+    flexDirection: 'row',
+    padding: 5,
+    borderRadius: 10,
+    width: 150,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+  },
+  customMarkerQuantityText: {
+    fontFamily: 'Inter_700Bold',
+    fontSize: 30,
+    color: 'white',
+  },
+  customMarkerText: {
+    fontFamily: 'Inter_700Bold',
+    fontSize: 15,
+    color: 'white',
   },
 });

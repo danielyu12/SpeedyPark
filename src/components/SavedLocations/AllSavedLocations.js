@@ -53,7 +53,7 @@ const AllSavedLocations = (props) => {
         );
       }}
       keyExtractor={(item) => {
-        `${item.BLK_NO}, ${item.STREET}`;
+        return `${item.BLK_NO}, ${item.STREET}`;
       }}
     />
   );

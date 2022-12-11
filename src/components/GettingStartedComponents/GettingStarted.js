@@ -1,11 +1,11 @@
-import { SafeAreaView, View, Image, StyleSheet } from 'react-native';
+import { SafeAreaView, View, StyleSheet } from 'react-native';
 import { useState } from 'react';
-import GettingStartedLogo from './GettingStarted/GettingStartedLogo';
-import GettingStartedPage1 from './GettingStarted/GettingStartedPage1';
-import GettingStartedPage2 from './GettingStarted/GettingStartedPage2';
-import GettingStartedPage3 from './GettingStarted/GettingStartedPage3';
-import GettingStartedPageIndicator from './GettingStarted/GettingStartedPageIndicator';
-import GestureRecognizer, { swipeDirections } from 'react-native-swipe-detect';
+import GettingStartedLogo from './GettingStartedLogo';
+import GettingStartedPage1 from './GettingStartedPage1';
+import GettingStartedPage2 from './GettingStartedPage2';
+import GettingStartedPage3 from './GettingStartedPage3';
+import GettingStartedPageIndicator from './GettingStartedPageIndicator';
+import GestureRecognizer from 'react-native-swipe-detect';
 
 const GettingStarted = ({ getStarted }) => {
   const [currentPage, setCurrentPage] = useState(0);

@@ -1,16 +1,32 @@
 import { View, StyleSheet, FlatList, Pressable, Text } from 'react-native';
+import React, { useState } from 'react';
 import SavedLocations from '../../../assets/SavedLocations.json';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import properCasing from '../../../scripts/ProperCasing';
 import { Inter_500Medium, Inter_700Bold } from '@expo-google-fonts/inter';
 import { useFonts } from 'expo-font';
-import { TabActions } from '@react-navigation/native';
+import { TabActions, useFocusEffect } from '@react-navigation/native';
 import DetermineColor, {
   calculatePercentage,
 } from '../../../scripts/DetermineColor';
 import spotNumbers from '../../../scripts/CreateStreetSpotNumberObject';
+import { savedLocationsCollection } from '../../../firebase-config';
+import { getDocs } from 'firebase/firestore';
 
 const AllSavedLocations = (props) => {
+  const [saved, setSaved] = useState([]);
+  useFocusEffect(
+    React.useCallback(() => {
+      getDocs(savedLocationsCollection).then((res) => {
+        const savedStreets = [];
+        res.docs.forEach((item) => {
+          savedStreets.push({ ...item.data() });
+        });
+        return setSaved(savedStreets);
+      });
+    }, [])
+  );
+
   const [fontsLoaded] = useFonts({
     Inter_500Medium,
     Inter_700Bold,
@@ -22,7 +38,7 @@ const AllSavedLocations = (props) => {
 
   return (
     <FlatList
-      data={SavedLocations}
+      data={saved}
       ItemSeparatorComponent={() => {
         return (
           <View

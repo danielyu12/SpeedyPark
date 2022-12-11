@@ -18,6 +18,7 @@
     "expo-font": "~10.2.0",
     "expo-location": "~14.3.0",
     "expo-status-bar": "~1.4.0",
+    "firebase": "^9.14.0",
     "mathjs": "^11.3.2",
     "react": "18.0.0",
     "react-native": "0.69.6",
@@ -32,7 +33,10 @@
     "react-native-screens": "~3.15.0",
     "react-native-svg": "^12.3.0",
     "react-native-swipe-detect": "^1.0.10",
-    "react-native-vector-icons": "^9.2.0"
+    "react-native-vector-icons": "^9.2.0",
+    "react-native-web": "~0.18.7",
+    "react-dom": "18.0.0",
+    "@expo/webpack-config": "^0.17.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"

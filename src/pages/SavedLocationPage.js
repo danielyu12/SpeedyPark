@@ -5,7 +5,7 @@ import {
   Inter_500Medium,
   Inter_700Bold,
 } from '@expo-google-fonts/inter';
-import AllSavedLocations from '../components/SavedLocations/AllSavedLocations';
+import AllSavedLocations from '../components/SavedLocationsComponents/AllSavedLocations';
 
 const SavedLocationPage = ({ navigation, onSavedSelect }) => {
   const [fontsLoaded] = useFonts({

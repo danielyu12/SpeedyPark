@@ -1,14 +1,17 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { View, StyleSheet, Text, Pressable } from 'react-native';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
+import { useFocusEffect } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 import CloseButton from './CloseButton';
 import CircularProgress from 'react-native-circular-progress-indicator';
-import ProperCasing from '../../../scripts/ProperCasing.js';
+import ProperCasing from '../../../../scripts/ProperCasing.js';
 import DetermineColor, {
   calculatePercentage,
-} from '../../../scripts/DetermineColor';
+} from '../../../../scripts/DetermineColor';
+import { db } from '../../../../firebase-config';
+import { doc, setDoc, getDoc, deleteDoc } from 'firebase/firestore';
 
 const days = [
   'Sunday',
@@ -21,6 +24,22 @@ const days = [
 ];
 
 const SpotInformationBottomSheet = (props) => {
+  useFocusEffect(
+    React.useCallback(() => {
+      const docRef = doc(
+        db,
+        'savedLocations',
+        `${props.currentStreet.street}-${props.currentStreet.block}`
+      );
+      getDoc(docRef).then((doc) => {
+        if (doc.exists()) {
+          setShowSaveButton(false);
+        }
+      });
+    }, [])
+  );
+
+  const [showSaveButton, setShowSaveButton] = useState(true);
   const sheetRef = useRef(null);
   const snapPoints = ['82%'];
   const [fontsLoaded] = useFonts({
@@ -140,12 +159,13 @@ const SpotInformationBottomSheet = (props) => {
             activeStrokeColor={
               props.currentStreet.zone
                 ? DetermineColor(props.currentStreet.zone)
-                : 'blue'
+                : 'gray'
             }
             activeStrokeWidth={30}
           />
           <Text style={styles.progressBarText}>
-            chance of finding a spot here for a typical {days[new Date().getDay()]}
+            chance of finding a spot here for a typical{' '}
+            {days[new Date().getDay()]}
           </Text>
         </View>
         <View style={styles.pricesContainer}>
@@ -162,9 +182,51 @@ const SpotInformationBottomSheet = (props) => {
           <Text style={styles.pricesText}>Free outside these hours</Text>
           <Text style={styles.pricesText}>No Restrictions</Text>
         </View>
-        <Pressable style={styles.saveButton} onPress={() => {}}>
-          <Text style={styles.saveButtonText}>Save Location</Text>
-        </Pressable>
+        <View
+          style={{
+            width: '100%',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}
+        >
+          {showSaveButton ? (
+            <Pressable
+              style={styles.saveButton}
+              onPress={() => {
+                const newDoc = doc(
+                  db,
+                  'savedLocations',
+                  `${props.currentStreet.street}-${props.currentStreet.block}`
+                );
+                setDoc(newDoc, {
+                  BLK_NO: props.currentStreet.block,
+                  STREET: props.currentStreet.street,
+                }).then(() => {
+                  alert('Location Saved');
+                });
+                setShowSaveButton(false);
+              }}
+            >
+              <Text style={styles.saveButtonText}>Save Location</Text>
+            </Pressable>
+          ) : (
+            <Pressable
+              style={styles.saveButton}
+              onPress={() => {
+                const docRef = doc(
+                  db,
+                  'savedLocations',
+                  `${props.currentStreet.street}-${props.currentStreet.block}`
+                );
+                deleteDoc(docRef);
+                setShowSaveButton(true);
+              }}
+            >
+              <Text style={styles.saveButtonText}>Remove Location</Text>
+            </Pressable>
+          )}
+        </View>
+
         <View style={{ height: 50 }} />
       </BottomSheetScrollView>
     </BottomSheet>
@@ -250,7 +312,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   saveButton: {
-    width: '100%',
+    width: '90%',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: '#1B7ACF',
@@ -266,7 +328,7 @@ const styles = StyleSheet.create({
   saveButtonText: {
     color: 'white',
     fontFamily: 'Inter_700Bold',
-    fontSize: 20,
+    fontSize: 17,
   },
 });
 

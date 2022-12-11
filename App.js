@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import SavedLocationPage from './src/pages/SavedLocationPage';
-import LinedMapPage from './src/pages/LinedMapPage';
+import MapPage from './src/pages/MapPage';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import GettingStarted from './src/components/GettingStarted';
+import GettingStarted from './src/components/GettingStartedComponents/GettingStarted';
 
 const Tab = createBottomTabNavigator();
 
@@ -36,7 +36,7 @@ const App = () => {
       >
         <Tab.Screen
           name="Map"
-          component={LinedMapPage}
+          component={MapPage}
           options={{ headerShown: false }}
         />
         <Tab.Screen

@@ -1,12 +1,10 @@
 import { Text } from 'react-native';
 import MapView, { Callout, Marker, Polyline } from 'react-native-maps';
 import { StyleSheet, View, StatusBar } from 'react-native';
-import spotNumbers from '../../scripts/CreateStreetSpotNumberObject.js';
+import spotNumbers from '../../../scripts/CreateStreetSpotNumberObject.js';
 import { Inter_700Bold } from '@expo-google-fonts/inter';
 import { useFonts } from 'expo-font';
-import DetermineColor, {
-  calculatePercentage,
-} from '../../scripts/DetermineColor';
+import DetermineColor from '../../../scripts/DetermineColor';
 
 export default function Map(props) {
   const [fontsLoaded] = useFonts({
@@ -36,12 +34,11 @@ export default function Map(props) {
               block !== 'BU BRIDGE 3' && (
                 <>
                   <Polyline
-                    key={`${street}, ${block}`}
                     strokeWidth={7}
                     strokeColor={
                       spotNumbers[street][block]['zone']
                         ? DetermineColor(spotNumbers[street][block]['zone'])
-                        : 'blue'
+                        : 'gray'
                     }
                     coordinates={spotNumbers[street][block]['coordinates']}
                     tappable={true}
@@ -67,7 +64,7 @@ export default function Map(props) {
                               ? DetermineColor(
                                   spotNumbers[street][block]['zone']
                                 )
-                              : 'blue',
+                              : 'gray',
                           },
                         ]}
                       >

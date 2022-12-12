@@ -3,7 +3,11 @@ import { View, StyleSheet, Text, Pressable } from 'react-native';
 import BottomSheet, { BottomSheetScrollView } from '@gorhom/bottom-sheet';
 import { useFocusEffect } from '@react-navigation/native';
 import { useFonts } from 'expo-font';
-import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
+import {
+  Inter_400Regular,
+  Inter_500Medium,
+  Inter_700Bold,
+} from '@expo-google-fonts/inter';
 import CloseButton from './CloseButton';
 import CircularProgress from 'react-native-circular-progress-indicator';
 import ProperCasing from '../../../../scripts/ProperCasing.js';
@@ -44,6 +48,7 @@ const SpotInformationBottomSheet = (props) => {
   const snapPoints = ['82%'];
   const [fontsLoaded] = useFonts({
     Inter_400Regular,
+    Inter_500Medium,
     Inter_700Bold,
   });
 
@@ -132,37 +137,45 @@ const SpotInformationBottomSheet = (props) => {
             </Text>
           </View>
         )}
-        <View style={styles.spotChanceContainer}>
-          <CircularProgress
-            value={
-              props.currentStreet.zone
-                ? Math.round(calculatePercentage(props.currentStreet.zone))
-                : 0
-            }
-            duration={750}
-            radius={110}
-            valueSuffix={'%'}
-            progressValueColor={
-              props.currentStreet.zone
-                ? DetermineColor(props.currentStreet.zone)
-                : 'black'
-            }
-            inActiveStrokeColor={'#D9D9D9'}
-            inActiveStrokeWidth={30}
-            activeStrokeColor={
-              props.currentStreet.zone
-                ? DetermineColor(props.currentStreet.zone)
-                : 'gray'
-            }
-            activeStrokeWidth={30}
-          />
-          <Text style={styles.progressBarText}>
-            chance of finding a spot here for a typical{' '}
-            {days[new Date().getDay()]}
-          </Text>
-        </View>
+        {props.currentStreet.zone ? (
+          <View style={styles.spotChanceContainer}>
+            <CircularProgress
+              value={
+                props.currentStreet.zone
+                  ? Math.round(calculatePercentage(props.currentStreet.zone))
+                  : 0
+              }
+              duration={750}
+              radius={110}
+              valueSuffix={'%'}
+              progressValueColor={
+                props.currentStreet.zone
+                  ? DetermineColor(props.currentStreet.zone)
+                  : 'black'
+              }
+              inActiveStrokeColor={'#D9D9D9'}
+              inActiveStrokeWidth={30}
+              activeStrokeColor={
+                props.currentStreet.zone
+                  ? DetermineColor(props.currentStreet.zone)
+                  : 'gray'
+              }
+              activeStrokeWidth={30}
+            />
+            <Text style={styles.progressBarText}>
+              chance of finding a spot here for a typical{' '}
+              {days[new Date().getDay()]}
+            </Text>
+          </View>
+        ) : (
+          <View style={styles.noDataContainer}>
+            <Text style={styles.noDataText}>
+              There is no data available for this zone
+            </Text>
+          </View>
+        )}
         <View style={styles.pricesContainer}>
-          <Text style={styles.pricesTitle}>Prices</Text>
+          {/* <Text style={styles.pricesTitle}>Information</Text> */}
           <Text style={styles.pricesText}>
             {parkingTime[1]} {parkingTime[0]}
           </Text>
@@ -229,7 +242,7 @@ const SpotInformationBottomSheet = (props) => {
 const styles = StyleSheet.create({
   handleComponentContainer: {
     flexDirection: 'row',
-    paddingHorizontal: 25,
+    paddingHorizontal: 35,
     paddingTop: 15,
     paddingBottom: 5,
     justifyContent: 'space-between',
@@ -265,11 +278,10 @@ const styles = StyleSheet.create({
   },
   freeParkingContainer: {
     justifyContent: 'center',
-    marginBottom: 30,
   },
   freeParkingText: {
     color: '#53B218',
-    fontSize: 20,
+    fontSize: 19,
     fontFamily: 'Inter_700Bold',
   },
   progressBarText: {
@@ -282,8 +294,21 @@ const styles = StyleSheet.create({
   spotChanceContainer: {
     width: '100%',
     marginBottom: 30,
+    marginTop: 30,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  noDataContainer: {
+    justifyContent: 'flex-start',
+    alignItems: 'flex-start',
+    marginBottom: 20,
+  },
+  noDataText: {
+    marginTop: 20,
+    fontSize: 19,
+    fontWeight: 'bold',
+    fontFamily: 'Inter_700Bold',
+    textAlign: 'left',
   },
   spotChancePercentage: {
     fontSize: 20,
@@ -297,14 +322,14 @@ const styles = StyleSheet.create({
   },
   pricesTitle: {
     fontSize: 20,
-    fontFamily: 'Inter_700Bold',
+    fontFamily: 'Inter_500Medium',
     color: 'black',
   },
   pricesText: {
-    fontSize: 16,
+    fontSize: 18,
     fontFamily: 'Inter_400Regular',
     color: 'black',
-    marginTop: 10,
+    marginBottom: 10,
   },
   saveButton: {
     width: '90%',
@@ -319,6 +344,7 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 3, height: 3 },
     shadowOpacity: 0.8,
     shadowRadius: 1,
+    marginTop: 15,
   },
   saveButtonText: {
     color: 'white',

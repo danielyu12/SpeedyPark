@@ -1,6 +1,5 @@
 import { View, StyleSheet, FlatList, Pressable, Text } from 'react-native';
 import React, { useState } from 'react';
-import SavedLocations from '../../../assets/SavedLocations.json';
 import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
 import properCasing from '../../../scripts/ProperCasing';
 import { Inter_500Medium, Inter_700Bold } from '@expo-google-fonts/inter';

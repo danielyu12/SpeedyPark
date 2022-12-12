@@ -14,13 +14,17 @@ const GettingStartedPage2 = () => {
   return (
     <View style={styles.container}>
       <Text style={[styles.text, { marginBottom: '5%' }]}>
-        Use the searchbar to look up your next destination and learn the
-        likeliness that you’ll find street parking
+        Use the searchbar to find street parking probabilities near your destination.
       </Text>
       <Image style={styles.image} source={ScreenShot} />
-      <Text style={styles.text}>
-        Green means very likely, orange is somewhat likely, and red means you
-        might want to look at other forms of transportation
+      <Text style={[styles.text, { marginBottom: '5%' }]}>
+        Green: Best chances to park.
+      </Text>
+      <Text style={[styles.text, { marginBottom: '5%' }]}>
+        Yellow: Moderate chance; wait time very possible.
+      </Text>
+      <Text style={[styles.text, { marginBottom: '5%' }]}>
+        Red: Consider alternative transportation.
       </Text>
     </View>
   );

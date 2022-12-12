@@ -1,6 +1,7 @@
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { View, Text, Pressable, StyleSheet, Image } from 'react-native';
 import { useFonts } from 'expo-font';
 import { Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
+import ScreenShot from '../../../assets/GettingStartedPage3Image.png';
 
 const GettingStartedPage3 = ({ getStarted }) => {
   const [fontsLoaded] = useFonts({
@@ -13,10 +14,10 @@ const GettingStartedPage3 = ({ getStarted }) => {
   }
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>
-        We’ll even let you know if the parking spots are free and any times the
-        spots might be closed for cleaning
+      <Text style={[styles.text, { marginBottom: '5%' }]}>
+        Click on the parking blocks for more information and save your locations!
       </Text>
+      <Image style={styles.image} source={ScreenShot} />
       <Pressable
         style={styles.button}
         onPress={() => {
@@ -41,6 +42,12 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: 'Inter_400Regular',
     textAlign: 'center',
+  },
+  image: {
+    width: '110%',
+    height: '60%',
+    borderRadius: 15,
+    marginBottom: '20%',
   },
   button: {
     width: '90%',

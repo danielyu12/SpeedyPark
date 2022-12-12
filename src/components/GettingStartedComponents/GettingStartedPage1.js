@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
-import { Inter_400Regular } from '@expo-google-fonts/inter';
+import { Inter_700Bold } from '@expo-google-fonts/inter';
 
 const GettingStartedPage1 = () => {
   const [fontsLoaded] = useFonts({
-    Inter_400Regular,
+    Inter_700Bold,
   });
 
   if (!fontsLoaded) {
@@ -13,11 +13,11 @@ const GettingStartedPage1 = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={[styles.text, { marginBottom: '5%' }]}>
-        Welcome to SpeedyPark!
+      <Text style={[styles.text, { marginBottom: '50%' }]}>
+        Street parking simplified!
       </Text>
-      <Text style={styles.text}>
-        An application to help you find parking in the Boston area!
+      <Text style={[styles.text, { marginBottom: '5%' }]}>
+        Swipe left to get started.
       </Text>
     </View>
   );
@@ -31,8 +31,8 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     color: 'white',
-    fontSize: 18,
-    fontFamily: 'Inter_400Regular',
+    fontSize: 20,
+    fontFamily: 'Inter_700Bold',
   },
 });
 

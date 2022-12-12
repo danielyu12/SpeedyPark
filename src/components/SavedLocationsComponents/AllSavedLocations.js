@@ -123,12 +123,15 @@ const Styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   streetTitle: {
-    fontSize: 12,
+    fontSize: 18,
+    marginLeft: 10,
+    flex: 1, 
+    flexWrap: 'wrap',
   },
   percentCircle: {
     width: 80,
     height: 80,
-    borderWidth: 1,
+    borderWidth: 4,
     borderRadius: 40,
     alignItems: 'center',
     justifyContent: 'center',
@@ -145,7 +148,7 @@ const Styles = StyleSheet.create({
   percentCircleSymbol: {
     marginTop: '10%',
     fontFamily: 'Inter_500Medium',
-    fontSize: 10,
+    fontSize: 15,
   },
 });
 

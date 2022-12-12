@@ -1,10 +1,10 @@
 import { View, Text, StyleSheet } from 'react-native';
 import { useFonts } from 'expo-font';
-import { Inter_700Bold } from '@expo-google-fonts/inter';
+import { Inter_400Regular } from '@expo-google-fonts/inter';
 
 const GettingStartedPage1 = () => {
   const [fontsLoaded] = useFonts({
-    Inter_700Bold,
+    Inter_400Regular,
   });
 
   if (!fontsLoaded) {
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     color: 'white',
     fontSize: 20,
-    fontFamily: 'Inter_700Bold',
+    fontFamily: 'Inter_400Regular',
   },
 });
 

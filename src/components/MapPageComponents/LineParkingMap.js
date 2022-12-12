@@ -7,6 +7,7 @@ import { useFonts } from 'expo-font';
 import DetermineColor, {
   calculatePercentage,
 } from '../../../scripts/DetermineColor';
+import React from 'react';
 
 export default function Map(props) {
   const [fontsLoaded] = useFonts({
@@ -39,7 +40,7 @@ export default function Map(props) {
               number + ' potential spots on ' + street + ' near ' + block;
             return (
               block !== 'BU BRIDGE 3' && (
-                <>
+                <React.Fragment key={`${street}, ${block}`}>
                   <Polyline
                     strokeWidth={7}
                     strokeColor={
@@ -86,7 +87,7 @@ export default function Map(props) {
                       </View>
                     </Marker>
                   )}
-                </>
+                </React.Fragment>
               )
             );
           });

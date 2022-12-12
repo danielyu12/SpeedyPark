@@ -29,8 +29,9 @@ const styles = StyleSheet.create({
     padding: '10%',
   },
   text: {
+    textAlign: 'center',
     color: 'white',
-    fontSize: 20,
+    fontSize: 18,
     fontFamily: 'Inter_400Regular',
   },
 });

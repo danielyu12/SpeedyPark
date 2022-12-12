@@ -22,7 +22,7 @@ const SavedLocationPage = ({ navigation, onSavedSelect }) => {
       <View style={Styles.titleContainer}>
         <Text style={Styles.titleText}>Saved</Text>
       </View>
-      <Text style={Styles.savedLocationTitle}>Saved Locations</Text>
+      <Text style={Styles.savedLocationTitle}>Your Saved Locations</Text>
       <View style={Styles.savedLocationsContainer}>
         <AllSavedLocations
           navigation={navigation}
@@ -44,12 +44,12 @@ const Styles = StyleSheet.create({
     alignItems: 'center',
   },
   titleText: {
-    fontSize: 20,
+    fontSize: 22,
     fontFamily: 'Inter_300Light',
   },
   savedLocationTitle: {
     fontFamily: 'Inter_500Medium',
-    fontSize: 20,
+    fontSize: 22,
     marginLeft: '6%',
     marginBottom: '5%',
   },

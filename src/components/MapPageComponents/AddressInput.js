@@ -20,8 +20,8 @@ function AddressInput(props) {
           container: { width: '95%' },
           textInput: {
             height: 50,
-            borderRadius: 20,
-            fontFamily: 'Inter_700Bold',
+            borderRadius: 10,
+            fontFamily: 'Inter_400Regular',
             shadowColor: '#00000040',
             shadowOffset: { width: 0, height: 3 },
             shadowOpacity: 0.8,
@@ -29,7 +29,7 @@ function AddressInput(props) {
           },
           listView: {
             borderRadius: 5,
-            fontFamily: 'Inter_700Bold',
+            fontFamily: 'Inter_400Regular',
             borderRadius: 10,
           },
         }}

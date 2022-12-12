@@ -89,34 +89,9 @@ const SpotInformationBottomSheet = (props) => {
 
   const parkingTime = props.currentStreet.payRate.split(' ');
 
-  //Adding custom border to the BottomSheet
-  const BottomSheetBackground = ({ style }) => {
+  const handleComponent = () => {
     return (
-      <View
-        style={[
-          {
-            backgroundColor: 'white',
-            borderRadius: 55,
-          },
-          { ...style },
-        ]}
-      />
-    );
-  };
-
-  return (
-    <BottomSheet
-      ref={sheetRef}
-      snapPoints={snapPoints}
-      handleComponent={null}
-      backgroundComponent={(props) => <BottomSheetBackground {...props} />}
-    >
-      <BottomSheetScrollView style={styles.sheetContainer} bounces={true}>
-        <CloseButton
-          style={styles.closeButton}
-          color={'#D9D9D9'}
-          onPress={props.onSheetClose}
-        />
+      <View style={styles.handleComponentContainer}>
         <Text style={styles.streetTitleText}>
           {ProperCasing(props.currentStreet.street)
             .replace('Bu ', 'BU ')
@@ -126,6 +101,24 @@ const SpotInformationBottomSheet = (props) => {
             .replace('Bu ', 'BU ')
             .replace(/[0-9]/g, '')}
         </Text>
+        <CloseButton
+          style={styles.closeButton}
+          color={'#D9D9D9'}
+          onPress={props.onSheetClose}
+        />
+      </View>
+    );
+  };
+
+  return (
+    <BottomSheet
+      ref={sheetRef}
+      snapPoints={snapPoints}
+      handleComponent={handleComponent}
+      style={{ borderRadius: 40, overflow: 'hidden' }}
+      containerStyle={{ borderTopLeftRadius: 40 }}
+    >
+      <BottomSheetScrollView style={styles.sheetContainer} bounces={true}>
         <View style={styles.parkingSpotsContainer}>
           <Text style={styles.parkingSpotsIcon}>P</Text>
           <Text style={styles.parkingSpotsText}>
@@ -234,16 +227,18 @@ const SpotInformationBottomSheet = (props) => {
 };
 
 const styles = StyleSheet.create({
-  closeButton: {
-    position: 'absolute',
-    top: 5,
-    right: 0,
+  handleComponentContainer: {
+    flexDirection: 'row',
+    paddingHorizontal: 25,
+    paddingTop: 15,
+    paddingBottom: 5,
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   sheetContainer: {
-    borderTopLeftRadius: 55,
-    borderTopRightRadius: 55,
     backgroundColor: '#fff',
     padding: 35,
+    paddingTop: 0,
   },
   streetTitleText: {
     fontSize: 20,

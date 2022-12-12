@@ -15,20 +15,24 @@ const App = () => {
     setShowStarted(false);
   };
 
+  const reopenGetStarted = () => {
+    setShowStarted(true);
+  };
+
   return showGetStarted ? (
     <GettingStarted getStarted={getStarted} />
   ) : (
     <NavigationContainer>
       <Tab.Navigator
         screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused, color, size }) => {
+          tabBarIcon: ({ focused, color }) => {
             let iconName;
             if (route.name === 'Map') {
               iconName = focused ? 'location' : 'location-outline';
             } else if (route.name === 'Saved') {
               iconName = focused ? 'ios-bookmark' : 'ios-bookmark-outline';
             }
-            return <Ionicons name={iconName} size={size} color={color} />;
+            return <Ionicons name={iconName} size={30} color={color} />;
           },
           tabBarActiveTintColor: 'black',
           tabBarInactiveTintColor: 'black',
@@ -38,6 +42,9 @@ const App = () => {
           name="Map"
           component={MapPage}
           options={{ headerShown: false }}
+          initialParams={{
+            setShowStarted: reopenGetStarted,
+          }}
         />
         <Tab.Screen
           name="Saved"

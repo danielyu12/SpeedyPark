@@ -3,12 +3,12 @@ import { StyleSheet, SafeAreaView, StatusBar } from 'react-native';
 import LineParkingMap from '../components/MapPageComponents/LineParkingMap';
 import SpotInformationBottomSheet from '../components/MapPageComponents/BottomSheet/SpotInformationBottomSheet';
 import AddressInput from '../components/MapPageComponents/AddressInput';
-import Legend from '../components/MapPageComponents/Legend';
 import spotNumbers from '../../scripts/CreateStreetSpotNumberObject';
+import OpenGettingStarted from '../components/MapPageComponents/OpenGettingStarted';
 
 const MapPage = (props) => {
   useEffect(() => {
-    if (props.route.params) {
+    if (props.route.params.street) {
       setStreetClicked(true);
       setSelectedStreet({
         street: props.route.params.street,
@@ -95,7 +95,7 @@ const MapPage = (props) => {
         showMarkers={showMarkers}
       />
       <AddressInput onLocationSearch={onLocationSearch} />
-      <Legend />
+      <OpenGettingStarted setShowStarted={props.route.params.setShowStarted} />
       {streetClicked && (
         <SpotInformationBottomSheet
           onSheetClose={onSheetClose}

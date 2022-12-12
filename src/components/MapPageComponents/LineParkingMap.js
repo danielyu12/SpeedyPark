@@ -4,7 +4,9 @@ import { StyleSheet, View, StatusBar } from 'react-native';
 import spotNumbers from '../../../scripts/CreateStreetSpotNumberObject.js';
 import { Inter_700Bold } from '@expo-google-fonts/inter';
 import { useFonts } from 'expo-font';
-import DetermineColor from '../../../scripts/DetermineColor';
+import DetermineColor, {
+  calculatePercentage,
+} from '../../../scripts/DetermineColor';
 
 export default function Map(props) {
   const [fontsLoaded] = useFonts({
@@ -17,10 +19,15 @@ export default function Map(props) {
   return (
     <View style={styles.container}>
       <MapView
-        provider="google"
         style={styles.map}
         region={props.region}
         showsUserLocation={true}
+        customMapStyle={[
+          {
+            featureType: 'poi',
+            stylers: [{ visibility: 'off' }],
+          },
+        ]}
         onRegionChangeComplete={(newRegion) => {
           props.onRegionChange(newRegion);
         }}
@@ -52,7 +59,7 @@ export default function Map(props) {
                       );
                     }}
                   />
-                  {props.showMarkers && (
+                  {props.showMarkers && spotNumbers[street][block]['zone'] && (
                     <Marker
                       coordinate={spotNumbers[street][block]['coordinates'][0]}
                     >
@@ -69,11 +76,13 @@ export default function Map(props) {
                         ]}
                       >
                         <Text style={styles.customMarkerQuantityText}>
-                          {spotNumbers[street][block]['quantity']}
+                          {Math.round(
+                            calculatePercentage(
+                              spotNumbers[street][block]['zone']
+                            )
+                          )}
                         </Text>
-                        <Text style={styles.customMarkerText}>
-                          total spots available
-                        </Text>
+                        <Text style={styles.customMarkerPercentageText}>%</Text>
                       </View>
                     </Marker>
                   )}
@@ -100,10 +109,9 @@ const styles = StyleSheet.create({
   },
   customMarker: {
     flexDirection: 'row',
-    padding: 5,
+    padding: 7,
     borderRadius: 10,
-    width: 150,
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     alignItems: 'center',
   },
   customMarkerQuantityText: {
@@ -111,9 +119,10 @@ const styles = StyleSheet.create({
     fontSize: 30,
     color: 'white',
   },
-  customMarkerText: {
+  customMarkerPercentageText: {
     fontFamily: 'Inter_700Bold',
-    fontSize: 15,
+    fontSize: 20,
+    marginTop: '10%',
     color: 'white',
   },
 });

@@ -127,7 +127,7 @@ const SpotInformationBottomSheet = (props) => {
         <View style={styles.parkingSpotsContainer}>
           <Text style={styles.parkingSpotsIcon}>P</Text>
           <Text style={styles.parkingSpotsText}>
-            {props.currentStreet.numberOfSpots} spots for this block (Zone {props.currentStreet.zone}).
+            {props.currentStreet.numberOfSpots} spots for this block.
           </Text>
         </View>
         {!paidParking && (
